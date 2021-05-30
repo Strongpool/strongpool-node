@@ -1,1 +1,1 @@
-# miner-distro
+# Standalone Strongpool Node
