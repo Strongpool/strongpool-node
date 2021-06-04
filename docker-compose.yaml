@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  arweave:
+    image: "arweave:latest"
+    ports:
+      - "1984:1984"
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
