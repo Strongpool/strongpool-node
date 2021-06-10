@@ -12,6 +12,8 @@ docker_version="1.29.2"
 
 command -v curl > /dev/null || die "Missing required dependency: curl"
 
+mkdir -p bin
+
 docker_compose=$(command -v docker-compose)
 if [[ "${docker_compose}" == "" ]]; then
     echo >&2 "Missing required dependency: docker-compose; downloading it..."
