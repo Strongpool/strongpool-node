@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO download bb into ./bin/bb
 set -e
 
 die () {
@@ -8,6 +7,7 @@ die () {
     exit 1
 }
 
+babashka_version="0.4.5"
 docker_version="1.29.2"
 
 command -v curl > /dev/null || die "Missing required dependency: curl"
@@ -20,7 +20,16 @@ if [[ "${docker_compose}" == "" ]]; then
     chmod 755 "${docker_compose}"
 fi
 
-bb=$(pwd)/bin/bb
+bb="$(pwd)/bin/bb"
+
+if [[ ! -f "${bb}" ]]; then
+    echo >&2 "Downloading Babashka..."
+    bb_tgz="babashka-${babashka_version}-linux-amd64-static.tar.gz"
+    curl -L "https://github.com/babashka/babashka/releases/download/v${babashka_version}/${bb_tgz}" -O
+    tar -C bin -xzf "${bb_tgz}"
+    rm "${bb_tgz}"
+    chmod 755 "${bb}"
+fi
 
 if [[ $# = 0 ]]; then
     $bb --tasks
