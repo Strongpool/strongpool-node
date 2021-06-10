@@ -5,7 +5,7 @@
    [clojure.string :as str]))
 
 (defn start []
-  (shell/sh "docker-compose" "start"))
+  (shell/sh "bash" "-c" "docker-compose start"))
 
 (defn stop []
-  (shell/sh "docker-compose" "exec" "-d" "arweave" "/arweave/bin/stop"))
+  (shell/sh "bash" "-c" "docker-compose exec -d arweave /arweave/bin/stop"))
