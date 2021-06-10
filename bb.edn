@@ -1,0 +1,8 @@
+{:paths ["src"]
+ :tasks
+ {:requires ([net.strongpool.node-tasks :as node-tasks])
+  start
+  (node-tasks/start)
+
+  stop
+  (node-tasks/stop)}}
