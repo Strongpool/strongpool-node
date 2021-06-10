@@ -1,2 +1,4 @@
-/bb
+/bin/bb
+/bin/docker-compose
+
 /data
