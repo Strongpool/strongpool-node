@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+  # TODO add 'restart: unless-stopped' and test it
   arweave:
     image: "arweave:latest"
     ports:

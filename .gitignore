@@ -1,4 +1,6 @@
+# Binaries
 /bin/bb
 /bin/docker-compose
 
+# Arweave data
 /data

@@ -4,6 +4,8 @@
    [clojure.java.shell :as shell]
    [clojure.string :as str]))
 
+;; TODO determine why 'bash -c' is needed to get $PATH right
+
 (defn start []
   (shell/sh "bash" "-c" "docker-compose start"))
 

@@ -33,6 +33,8 @@ if [[ ! -f "${bb}" ]]; then
     chmod 755 "${bb}"
 fi
 
+# TODO verify checksums of docker-compose and bb
+
 if [[ $# = 0 ]]; then
     $bb --tasks
     exit
