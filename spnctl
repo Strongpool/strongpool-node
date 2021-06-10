@@ -27,6 +27,7 @@ if [[ $# = 0 ]]; then
     exit
 fi
 
-export PATH="$(pwd)/bin:$PATH"
+PATH="$(pwd)/bin:$PATH"
+export PATH
 
 "${bb}" run "$@"
