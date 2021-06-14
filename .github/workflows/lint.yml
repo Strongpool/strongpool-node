@@ -42,7 +42,7 @@ jobs:
         status: SUCCESS
         color: good
 
-    - name: Notify Slack success
+    - name: Notify Slack failure
       if: failure()
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
