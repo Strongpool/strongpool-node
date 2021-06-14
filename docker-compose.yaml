@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+  # TODO set ulimit
   arweave:
     image: "arweave:latest"
     restart: on-failure

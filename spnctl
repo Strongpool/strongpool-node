@@ -14,6 +14,8 @@ command -v curl > /dev/null || die "Missing required dependency: curl"
 
 mkdir -p bin
 
+# TODO check whether Docker is installed
+
 docker_compose=$(command -v docker-compose)
 if [[ "${docker_compose}" == "" ]]; then
     echo >&2 "Missing required dependency: docker-compose; downloading it..."
@@ -45,6 +47,8 @@ if [[ ! -f "${bb}" ]]; then
 
     chmod 755 "${bb}"
 fi
+
+# TODO check whether huge pages are enabled
 
 if [[ $# = 0 ]]; then
     $bb --tasks
