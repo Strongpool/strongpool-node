@@ -30,7 +30,6 @@ if [[ "${docker_compose}" == "" ]]; then
 fi
 
 bb="$(pwd)/bin/bb"
-
 if [[ ! -f "${bb}" ]]; then
     echo >&2 "Downloading Babashka..."
     bb_tgz="babashka-${babashka_version}-linux-amd64-static.tar.gz"
