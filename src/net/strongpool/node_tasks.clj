@@ -33,7 +33,7 @@
                        (str "peer "))
         other-args (->> (get-in config [:arweave :args])
                         (str/join " "))
-        args (str other-args peer-args)
+        args (str other-args " " peer-args)
         cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
     (shell/sh "bash" "-c" cmd)))
 
