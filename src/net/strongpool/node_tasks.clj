@@ -28,9 +28,12 @@
 
 (defn start []
   (let [config (get-config)
-        args (->> (get-in config [:arweave :peers])
-                  (str/join " peer ")
-                  (str "peer "))
+        peer-args (->> (get-in config [:arweave :peers])
+                       (str/join " peer ")
+                       (str "peer "))
+        args (->> (get-in config [:arweave :args])
+                  (str/join " ")
+                  (str peer-args " " ))
         cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
     (shell/sh "bash" "-c" cmd)))
 
