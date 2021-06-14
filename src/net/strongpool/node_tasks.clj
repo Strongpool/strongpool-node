@@ -1,6 +1,5 @@
 (ns net.strongpool.node-tasks
   (:require
-   [clojure.string :as str]
    [clojure.java.shell :as shell]))
 
 ;; TODO determine why 'bash -c' is needed to get $PATH right
