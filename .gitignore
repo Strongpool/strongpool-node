@@ -4,3 +4,6 @@
 
 # Arweave data
 /data
+
+# Configuration
+/config.edn
