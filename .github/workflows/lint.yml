@@ -4,12 +4,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - name: Notify Slack of start
+    - name: Notify Slack start
       uses: voxmedia/github-action-slack-notify-build@v1
+      id: slack
       with:
         channel: dev-log
-        status: STARTED
-        color: good
+        status: STARTING
+        color: warning
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
 
@@ -28,3 +29,27 @@ jobs:
 
     - name: Run shellcheck
       run: shellcheck spnctl
+
+    - name: Notify Slack success
+      if: success()
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        # Updates existing message from the first step
+        message_id: ${{ steps.slack.outputs.message_id }}
+        channel: dev-log
+        status: SUCCESS
+        color: good
+
+    - name: Notify Slack success
+      if: failure()
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        # Updates existing message from the first step
+        message_id: ${{ steps.slack.outputs.message_id }}
+        channel: dev-log
+        status: FAILED
+        color: danger
