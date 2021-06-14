@@ -5,20 +5,30 @@
    [clojure.java.shell :as shell]
    [clojure.string :as str]))
 
-;; TODO cleanup config loading code
-(def default-config (-> ".default-config.edn"
-                        slurp
-                        edn/read-string))
+(def default-config-filename ".default-config.edn")
+(def user-config-filename "config.edn")
 
-(def config (->> (if (.exists (io/file "config.edn"))
-                   (-> "config.edn" slurp edn/read-string)
-                   {})
-                 (merge-with merge default-config)))
+;; TODO validate config against a spec
+
+(defn get-config []
+  (let [default-config (-> default-config-filename
+                           slurp
+                           edn/read-string)
+        user-config-file (io/file user-config-filename)]
+    (if (.exists user-config-file)
+      (->> user-config-file
+           io/reader
+           slurp
+           edn/read-string
+           (merge-with merge default-config))
+      default-config)))
 
 ;; TODO determine why 'bash -c' is needed to get $PATH right
+;; TODO create a shell/sh wrapper with default error and output handling
 
 (defn start []
-  (let [args (->> (get-in config [:arweave :peers])
+  (let [config (get-config)
+        args (->> (get-in config [:arweave :peers])
                   (str/join " peer ")
                   (str "peer "))
         cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
