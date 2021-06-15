@@ -44,7 +44,13 @@ if [ "1.13.0" != "$(echo -e "${installed_docker_compose_version}\n1.13.0" | sort
 fi
 
 bb="$(pwd)/bin/bb"
-if [ ! -f "${bb}" ]; then
+
+installed_babashka_version="0.0.0"
+if [ -e "${bb}" ]; then
+    installed_babashka_version=$("${bb}" --version | grep -o 'v[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}')
+fi
+
+if [ "${babashka_version}" != "$(echo -e "${installed_babashka_version}\n${babashka_version}" | sort -V | head -n1)" ]; then
     echo >&2 "Downloading Babashka version ${babashka_version}..."
     bb_tgz="babashka-${babashka_version}-linux-amd64-static.tar.gz"
     curl -sS -L "https://github.com/babashka/babashka/releases/download/v${babashka_version}/${bb_tgz}" -O
