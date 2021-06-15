@@ -16,10 +16,9 @@ docker_compose_version="1.29.2"
 min_docker_compose_version="1.25.0"
 
 command -v curl > /dev/null || die "Missing required dependency: curl"
+command -v docker > /dev/null || die "Missing required dependency: docker\nPlease follow the install instructions here: https://docs.docker.com/engine/install/"
 
 mkdir -p bin
-
-# TODO check whether Docker is installed
 
 docker_compose=$(command -v docker-compose || true)
 if [ "${docker_compose}" == "" ]; then
