@@ -8,6 +8,12 @@
 (def default-config-filename ".default-config.edn")
 (def user-config-filename "config.edn")
 
+(defn checked-sh [& args]
+  (let [res (apply shell/sh args)]
+    (if (not= 0 (:exit res))
+      (throw (ex-info "Error returned from shell command" res))
+      res)))
+
 ;; TODO validate config against a spec
 
 (defn get-config []
@@ -34,12 +40,17 @@
                         (str/join " "))
         args (str other-args " " peer-args)
         cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
-    (shell/sh "bash" "-c" cmd)))
+    (print "Staring Stronpool node... ")
+    (checked-sh "bash" "-c" cmd)
+    (println "started.")))
 
 (defn stop []
-  (shell/sh "bash" "-c" "docker-compose exec -d arweave /arweave/bin/stop"))
+  (print "Stopping Stronpool node... ")
+  (checked-sh "bash" "-c" "docker-compose exec -d arweave /arweave/bin/stop")
+  (println "stopped.") ;; TODO wait for arweave service to actually stop
+  )
 
 (defn logs []
-  (-> (shell/sh "bash" "-c" "docker-compose logs")
+  (-> (checked-sh "bash" "-c" "docker-compose logs")
       :out
       println))
