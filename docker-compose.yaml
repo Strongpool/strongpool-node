@@ -10,5 +10,4 @@ services:
       - type: bind
         source: ./data
         target: /data
-    environment:
-      - ARWEAVE_ARGS
+    command: ${ARWEAVE_ARGS}
