@@ -13,11 +13,9 @@
 (defn get-config []
   (let [default-config (-> default-config-filename
                            slurp
-                           edn/read-string)
-        user-config-file (io/file user-config-filename)]
-    (if (.exists user-config-file)
-      (->> user-config-file
-           io/reader
+                           edn/read-string)]
+    (if (-> user-config-filename io/file .exists)
+      (->> user-config-filename
            slurp
            edn/read-string
            (merge-with merge default-config))
@@ -25,6 +23,7 @@
 
 ;; TODO determine why 'bash -c' is needed to get $PATH right
 ;; TODO create a shell/sh wrapper with default error and output handling
+;; TODO add command descriptions
 
 (defn start []
   (let [config (get-config)
