@@ -5,4 +5,7 @@
   (node-tasks/start)
 
   stop
-  (node-tasks/stop)}}
+  (node-tasks/stop)
+
+  logs
+  (node-tasks/logs)}}

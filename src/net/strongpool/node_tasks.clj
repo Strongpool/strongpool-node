@@ -43,3 +43,8 @@
   ;; (shell/sh "bash" "-c" "sleep 10")
   ;; (shell/sh "bash" "-c" "docker-compose stop")
   )
+
+(defn logs []
+  (-> (shell/sh "bash" "-c" "docker-compose logs")
+      :out
+      println))
