@@ -13,6 +13,7 @@ die () {
 
 babashka_version="0.4.5"
 docker_compose_version="1.29.2"
+min_docker_compose_version="1.25.0"
 
 command -v curl > /dev/null || die "Missing required dependency: curl"
 
@@ -30,7 +31,7 @@ if [ -e "${docker_compose}" ]; then
     installed_docker_compose_version=$("${docker_compose}" --version | grep -o '[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}')
 fi
 
-if [ "1.13.0" != "$(echo -e "${installed_docker_compose_version}\n1.13.0" | sort -V | head -n1)" ]; then
+if [ "${min_docker_compose_version}" != "$(echo -e "${installed_docker_compose_version}\n${min_docker_compose_version}" | sort -V | head -n1)" ]; then
     echo >&2 "Missing or old version of required dependency: docker-compose; downloading docker-compose version ${docker-compose_version}..."
     curl -sS -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o "${docker_compose}"
 
