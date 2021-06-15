@@ -38,11 +38,7 @@
     (shell/sh "bash" "-c" cmd)))
 
 (defn stop []
-  ;; TODO determine whether separate stop command is necessary
-  (shell/sh "bash" "-c" "docker-compose exec -d arweave /arweave/bin/stop")
-  ;; (shell/sh "bash" "-c" "sleep 10")
-  ;; (shell/sh "bash" "-c" "docker-compose stop")
-  )
+  (shell/sh "bash" "-c" "docker-compose exec -d arweave /arweave/bin/stop"))
 
 (defn logs []
   (-> (shell/sh "bash" "-c" "docker-compose logs")
