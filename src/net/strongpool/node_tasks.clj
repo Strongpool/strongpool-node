@@ -28,7 +28,6 @@
       default-config)))
 
 ;; TODO determine why 'bash -c' is needed to get $PATH right
-;; TODO create a shell/sh wrapper with default error and output handling
 ;; TODO add command descriptions
 
 (defn start []
