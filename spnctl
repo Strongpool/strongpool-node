@@ -2,6 +2,10 @@
 
 set -e
 
+if [[ "${DEBUG}" ]]; then
+    set -x
+fi
+
 die () {
     echo >&2 -e "$*"
     exit 1
