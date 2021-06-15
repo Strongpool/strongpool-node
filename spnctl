@@ -2,9 +2,7 @@
 
 set -e
 
-if [[ "${DEBUG}" ]]; then
-    set -x
-fi
+[ -n "$DEBUG" ] && set -x
 
 die () {
     echo >&2 -e "$*"
