@@ -21,12 +21,17 @@ mkdir -p bin
 # TODO check whether Docker is installed
 
 docker_compose=$(command -v docker-compose || true)
-if [[ "${docker_compose}" == "" ]]; then
+if [ "${docker_compose}" == "" ]; then
     docker_compose="$(pwd)/bin/docker-compose"
 fi
 
-if [[ ! -f "${docker_compose}" ]]; then
-    echo >&2 "Missing required dependency: docker-compose; downloading it..."
+installed_docker_compose_version="0.0.0"
+if [ -e "${docker_compose}" ]; then
+    installed_docker_compose_version=$("${docker_compose}" --version | grep -o '[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}')
+fi
+
+if [ "1.13.0" != "$(echo -e "${installed_docker_compose_version}\n1.13.0" | sort -V | head -n1)" ]; then
+    echo >&2 "Missing or old version of required dependency: docker-compose; downloading docker-compose version ${docker-compose_version}..."
     curl -sS -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o "${docker_compose}"
 
     echo "Verify checksum..."
@@ -39,8 +44,8 @@ if [[ ! -f "${docker_compose}" ]]; then
 fi
 
 bb="$(pwd)/bin/bb"
-if [[ ! -f "${bb}" ]]; then
-    echo >&2 "Downloading Babashka..."
+if [ ! -f "${bb}" ]; then
+    echo >&2 "Downloading Babashka version ${babashka_version}..."
     bb_tgz="babashka-${babashka_version}-linux-amd64-static.tar.gz"
     curl -sS -L "https://github.com/babashka/babashka/releases/download/v${babashka_version}/${bb_tgz}" -O
     tar -C bin -xzf "${bb_tgz}"
