@@ -16,7 +16,7 @@ mkdir -p bin
 
 # TODO check whether Docker is installed
 
-docker_compose=$(command -v docker-compose)
+docker_compose=$(command -v docker-compose || true)
 if [[ "${docker_compose}" == "" ]]; then
     echo >&2 "Missing required dependency: docker-compose; downloading it..."
     docker_compose="$(pwd)/bin/docker-compose"
