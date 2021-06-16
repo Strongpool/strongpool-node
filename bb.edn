@@ -1,4 +1,4 @@
-{:paths ["src"]
+{:paths ["src/clj"]
  :tasks
  {:requires ([net.strongpool.node-tasks :as node-tasks])
   start
