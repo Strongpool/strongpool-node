@@ -1,8 +1,8 @@
 (ns net.strongpool.node.config
+  (:refer-clojure :exclude [load])
   (:require
    [babashka.fs :as fs]
-   [clojure.edn :as edn]
-   [clojure.java.io :as io]))
+   [clojure.edn :as edn]))
 
 (def base-config
   {:arweave
