@@ -14,12 +14,14 @@
 
 ;; TODO determine why 'bash -c' is needed to get $PATH right
 
+;; TODO add 'dc' (docker-compose) command
+
 (defn start []
   (when-let [config (config/validated-load)]
     (let [peer-args (->> (get-in config [:arweave :peers])
                          (str/join " peer ")
                          (str "peer "))
-          other-args (->> (get-in config [:arweave :args])
+          other-args (->> (get-in config [:arweave :extra-args])
                           (str/join " ")
                           (str "mining_addr " (:miner-address config) " "))
           args (str other-args " " peer-args)
