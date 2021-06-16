@@ -8,6 +8,20 @@ nodes for additional assurance of access to their data and lower latency. The
 Strongpool Node aims to make that as painless as possible by providing a safe,
 ops friendly, batteries included, way to run Arweave nodes.
 
+## Features
+
+### Implemented
+
+- User friendly node control interface
+- Enhanced config validation
+- Containerized Arweave server
+- Server healthcheck
+
+### Planned
+
+- Caching reverse proxy
+- Bundled gateway
+
 ## Getting Started
 
 1. Clone the `stable` branch of this repo: `git clone -b stable --depth 1 https://github.com/Strongpool/strongpool-node.git`
