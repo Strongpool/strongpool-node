@@ -1,4 +1,12 @@
-# Standalone Strongpool Node
+# Strongpool Node
+
+## Rationale
+
+Arweave differs from most block chains in providing a storage service. It is
+expected that projects building on Arweave will want to run their own Arweave
+nodes for additional assurance of access to their data and lower latency. The
+Strongpool Node aims to make that as painless as possible by providing a safe,
+ops friendly, batteries included, way to run Arweave nodes.
 
 ## Getting Started
 
