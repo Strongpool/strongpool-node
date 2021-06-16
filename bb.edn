@@ -1,14 +1,14 @@
 {:paths ["src/clj"]
  :tasks
- {:requires ([net.strongpool.node-tasks :as node-tasks])
+ {:requires ([net.strongpool.node.tasks :as tasks])
   start
   {:doc "Start the node"
-   :task (node-tasks/start)}
+   :task (tasks/start)}
 
   stop
   {:doc "Stop the node"
-   :task (node-tasks/stop)}
+   :task (tasks/stop)}
 
   logs
   {:doc "Display logs for the node"
-   :task (node-tasks/logs)}}}
+   :task (tasks/logs)}}}

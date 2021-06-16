@@ -1,4 +1,4 @@
-(ns net.strongpool.node-tasks
+(ns net.strongpool.node.tasks
   (:require
    [clojure.java.shell :as shell]
    [clojure.string :as str]

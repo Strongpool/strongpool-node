@@ -1,5 +1,6 @@
 (ns net.strongpool.node.config
   (:require
+   [babashka.fs :as fs]
    [clojure.edn :as edn]
    [clojure.java.io :as io]))
 
@@ -12,7 +13,7 @@
 ;; TODO validate config against a spec
 
 (defn load []
-  (if (-> config-filename io/file .exists)
+  (if (fs/exists? config-filename)
     (->> config-filename
          slurp
          edn/read-string
