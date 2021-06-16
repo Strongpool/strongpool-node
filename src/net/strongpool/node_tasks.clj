@@ -5,27 +5,27 @@
    [clojure.java.shell :as shell]
    [clojure.string :as str]))
 
-(def default-config-filename ".default-config.edn")
-(def user-config-filename "config.edn")
+(def base-config
+  {:arweave
+   {:peers ["188.166.200.45" "188.166.192.169" "163.47.11.64" "139.59.51.59" "138.197.232.192"]}})
+
+(def config-filename "config.edn")
+
+;; TODO validate config against a spec
+
+(defn get-config []
+  (if (-> config-filename io/file .exists)
+    (->> config-filename
+         slurp
+         edn/read-string
+         (merge-with merge base-config))
+    base-config))
 
 (defn checked-sh [& args]
   (let [res (apply shell/sh args)]
     (if (not= 0 (:exit res))
       (throw (ex-info "Error returned from shell command" res))
       res)))
-
-;; TODO validate config against a spec
-
-(defn get-config []
-  (let [default-config (-> default-config-filename
-                           slurp
-                           edn/read-string)]
-    (if (-> user-config-filename io/file .exists)
-      (->> user-config-filename
-           slurp
-           edn/read-string
-           (merge-with merge default-config))
-      default-config)))
 
 ;; TODO determine why 'bash -c' is needed to get $PATH right
 ;; TODO add command descriptions
