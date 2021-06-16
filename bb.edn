@@ -1,4 +1,4 @@
-{:paths ["src/clj"]
+{:paths ["src/clj" "vendor/spartan.spec/src"]
  :tasks
  {:requires ([net.strongpool.node.tasks :as tasks])
   start
