@@ -2,10 +2,13 @@
  :tasks
  {:requires ([net.strongpool.node-tasks :as node-tasks])
   start
-  (node-tasks/start)
+  {:doc "Start the node"
+   :task (node-tasks/start)}
 
   stop
-  (node-tasks/stop)
+  {:doc "Stop the node"
+   :task (node-tasks/stop)}
 
   logs
-  (node-tasks/logs)}}
+  {:doc "Display logs for the node"
+   :task (node-tasks/logs)}}}
