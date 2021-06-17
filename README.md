@@ -16,6 +16,7 @@ ops friendly, batteries included, way to run Arweave nodes.
 - Enhanced config validation
 - Containerized Arweave server
 - Server healthcheck
+- Clear licensing
 
 ### Planned
 
