@@ -8,9 +8,14 @@
 
 #?(:bb (alias 's 'clojure.spec.alpha))
 
-(s/def ::miner-address string?)         ; TODO validate with regex
-(s/def ::peers (s/coll-of string?))     ; TODO validate with regex
-(s/def ::extra-args (s/coll-of string?))
+(def digest-regex #"(?i)^[a-z0-9-_]{43}$")
+(def ipv4-address-regex #"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$")
+
+(s/def ::ipv4-address (s/and string? #(re-matches ipv4-address-regex %)))
+(s/def ::miner-address (s/and string? #(re-matches digest-regex %)))
+(s/def ::peers (s/coll-of ::ipv4-address))
+(s/def ::extra-arg (s/and string? not-empty))
+(s/def ::extra-args (s/coll-of ::extra-args))
 (s/def ::arweave (s/keys :req-un [::peers]
                          :opt [::extra-args]))
 (s/def ::node-config (s/keys :req-un [::miner-address ::arweave]))
