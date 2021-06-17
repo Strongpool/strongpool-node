@@ -2,6 +2,6 @@ SPDXVersion: SPDX-2.2
 DataLicense: CC0-1.0
 Creator: Organization: Strongpool, LLC
 PackageName: strongpool-node
-PackageOriginator: Strongpool, LLC
+PackageOriginator: Organization: Strongpool, LLC
 PackageHomePage: https://github.com/Strongpool/strongpool-node
 PackageLicenseDeclared: EPL-1.0
