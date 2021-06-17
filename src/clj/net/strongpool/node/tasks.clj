@@ -19,18 +19,20 @@
 
 (defn start []
   (when-let [config (config/validated-load)]
-    (let [peer-args (->> (get-in config [:arweave :peers])
+    (let [args (cond-> ""
+                 (:mine? config)
+                 (str " mine")
+
+                 (and (:mine? config) (:miner-address config))
+                 (str " mining_addr " (:miner-address config) " ")
+
+                 (get-in config [:arweave :extra-args])
+                 (str (str/join " " (get-in config [:arweave :extra-args])) " ")
+
+                 :always
+                 (str (->> (get-in config [:arweave :peers])
                          (str/join " peer ")
-                         (str "peer "))
-          other-args (cond-> ""
-                       (:mine? config)
-                       (str " mine ")
-
-                       (and (:mine? config) (:miner-address config))
-                       (str " mining_address " (:miner-address config))
-
-                       (get-in config [:arweave :extra-args]) (str/join " " (get-in config [:arweave :extra-args])))
-          args (str other-args " " peer-args)
+                         (str "peer "))))
           cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
       (print "Staring Stronpool node... ")
       (checked-sh "bash" "-c" cmd)
