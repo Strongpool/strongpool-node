@@ -40,3 +40,8 @@
   (-> (checked-sh "bash" "-c" "docker-compose logs")
       :out
       println))
+
+(defn validate-config []
+  (when-let [config (config/validated-load)]
+    (println "Valid Strongpool config:")
+    (pprint config)))

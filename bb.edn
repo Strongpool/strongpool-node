@@ -11,4 +11,8 @@
 
   logs
   {:doc "Display logs for the node"
-   :task (tasks/logs)}}}
+   :task (tasks/logs)}
+
+  validate-config
+  {:doc "Validate node config"
+   :task (tasks/validate-config)}}}
