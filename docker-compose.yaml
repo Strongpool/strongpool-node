@@ -1,6 +1,5 @@
 version: "3.0"
 services:
-  # TODO set ulimit
   arweave:
     image: "arweave:latest"
     restart: on-failure
@@ -10,4 +9,8 @@ services:
       - type: bind
         source: ./data
         target: /data
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576
     command: ${ARWEAVE_ARGS}
