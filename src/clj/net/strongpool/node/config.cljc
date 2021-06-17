@@ -15,14 +15,19 @@
 (s/def ::ipv4-address (s/and string? #(re-matches ipv4-address-regex %)))
 (s/def ::miner-address (s/and string? #(re-matches digest-regex %)))
 (s/def ::peers (s/coll-of ::ipv4-address))
+(s/def ::mine? boolean?)
 (s/def ::extra-arg (s/and string? not-empty))
 (s/def ::extra-args (s/coll-of ::extra-args))
 (s/def ::arweave (s/keys :req-un [::peers]
                          :opt [::extra-args]))
-(s/def ::node-config (s/keys :req-un [::miner-address ::arweave]))
+(s/def ::node-config (s/keys :req-un [;; TODO only require miner-address if mining
+                                      ::mine?
+                                      ::miner-address
+                                      ::arweave]))
 
 (def base-config
-  {:arweave
+  {:mine? true
+   :arweave
    {:peers #{"188.166.200.45"
              "188.166.192.169"
              "163.47.11.64"

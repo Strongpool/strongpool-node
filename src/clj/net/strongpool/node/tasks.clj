@@ -22,9 +22,14 @@
     (let [peer-args (->> (get-in config [:arweave :peers])
                          (str/join " peer ")
                          (str "peer "))
-          other-args (->> (get-in config [:arweave :extra-args])
-                          (str/join " ")
-                          (str "mining_addr " (:miner-address config) " "))
+          other-args (cond-> ""
+                       (:mine? config)
+                       (str " mine ")
+
+                       (and (:mine? config) (:miner-address config))
+                       (str " mining_address " (:miner-address config))
+
+                       (get-in config [:arweave :extra-args]) (str/join " " (get-in config [:arweave :extra-args])))
           args (str other-args " " peer-args)
           cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
       (print "Staring Stronpool node... ")
