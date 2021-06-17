@@ -4,7 +4,8 @@
    [babashka.fs :as fs]
    [clojure.edn :as edn]
    #?(:bb  [spartan.spec :as s]
-      :default [clojure.spec.alpha :as s])))
+      :default [clojure.spec.alpha :as s])
+   [expound.alpha :as expound]))
 
 #?(:bb (alias 's 'clojure.spec.alpha))
 
@@ -46,7 +47,7 @@
    (let [config #_:clj-kondo/ignore (load filename)]
      (if (s/valid? ::node-config config)
        config
-       (s/explain ::node-config config)))))
+       (expound/expound ::node-config config)))))
 
 (comment
 
