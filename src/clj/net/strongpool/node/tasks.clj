@@ -1,6 +1,7 @@
 (ns net.strongpool.node.tasks
   (:require
    [clojure.java.shell :as shell]
+   [clojure.pprint :refer [pprint]]
    [clojure.string :as str]
    [net.strongpool.node.config :as config]))
 
