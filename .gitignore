@@ -6,4 +6,4 @@
 /data
 
 # Configuration
-/config.edn
+/config/strongpool.edn

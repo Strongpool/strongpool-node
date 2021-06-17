@@ -28,7 +28,7 @@
              "139.59.51.59"
              "138.197.232.192"}}})
 
-(def config-filename "config.edn")
+(def config-filename "config/strongpool.edn")
 
 (defn load [filename]
   (if (fs/exists? filename)
