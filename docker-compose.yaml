@@ -1,11 +1,12 @@
 ---
-version: "3.0"
+
+version: '3.0'
 services:
   arweave:
-    image: "arweave:latest"
+    image: arweave:latest
     restart: on-failure
     ports:
-      - "1984:1984"
+      - 1984:1984
     volumes:
       - type: bind
         source: ./data

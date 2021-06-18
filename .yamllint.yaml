@@ -1,0 +1,9 @@
+---
+
+extends: default
+
+rules:
+  quoted-strings:
+    required: only-when-needed
+  truthy:
+    check-keys: false
