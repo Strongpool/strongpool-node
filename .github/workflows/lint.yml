@@ -19,8 +19,8 @@ jobs:
       with:
         version: '2021.06.01'
 
-    - name: Install shellcheck
-      run: sudo apt-get install shellcheck
+    - name: Install shellcheck and yamllint
+      run: sudo apt-get install shellcheck yamllint
 
     - uses: actions/checkout@v1
 
@@ -29,6 +29,9 @@ jobs:
 
     - name: Run shellcheck
       run: shellcheck spnctl
+
+    - name: Run yamllint
+      run: yamllint -s docker-compose.yaml
 
     - name: Notify Slack success
       if: success()
