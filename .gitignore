@@ -1,3 +1,7 @@
+# Clojure
+/.clj-kondo
+/.cpcache
+
 # Binaries
 /bin/bb
 /bin/docker-compose
