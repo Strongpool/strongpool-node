@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Run clj-kondo
-      run: clj-kondo --lint src/clj
+      run: clj-kondo --lint src
 
     - name: Run shellcheck
       run: shellcheck spnctl
