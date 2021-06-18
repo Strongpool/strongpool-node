@@ -17,22 +17,25 @@
 
 ;; TODO add 'dc' (docker-compose) command
 
+(defn arweave-args [config]
+  (cond-> ""
+    (:mine? config)
+    (str " mine")
+
+    (and (:mine? config) (:miner-address config))
+    (str " mining_addr " (:miner-address config) " ")
+
+    (get-in config [:arweave :extra-args])
+    (str (str/join " " (get-in config [:arweave :extra-args])) " ")
+
+    (get-in config [:arweave :peers])
+    (str (->> (get-in config [:arweave :peers])
+              (str/join " peer ")
+              (str "peer ")))))
+
 (defn start []
   (when-let [config (config/validated-load)]
-    (let [args (cond-> ""
-                 (:mine? config)
-                 (str " mine")
-
-                 (and (:mine? config) (:miner-address config))
-                 (str " mining_addr " (:miner-address config) " ")
-
-                 (get-in config [:arweave :extra-args])
-                 (str (str/join " " (get-in config [:arweave :extra-args])) " ")
-
-                 :always
-                 (str (->> (get-in config [:arweave :peers])
-                         (str/join " peer ")
-                         (str "peer "))))
+    (let [args (arweave-args config)
           cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
       (print "Staring Stronpool node... ")
       (checked-sh "bash" "-c" cmd)

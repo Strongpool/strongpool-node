@@ -1,0 +1,5 @@
+{:paths ["src" "test" "vendor/expound/src" "vendor/spartan.spec/src"]
+ :deps {babashka/fs {:mvn/version "0.0.5"}}
+ :aliases
+ {:test
+  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}}}}}
