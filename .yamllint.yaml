@@ -3,6 +3,8 @@
 extends: default
 
 rules:
+  line-length:
+    max: 100
   quoted-strings:
     required: only-when-needed
   truthy:
