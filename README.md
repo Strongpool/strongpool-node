@@ -1,5 +1,7 @@
 # Strongpool Node
 
+[![lint](https://github.com/Strongpool/strongpool-node/actions/workflows/lint.yml/badge.svg)](https://github.com/Strongpool/strongpool-node/actions/workflows/lint.yml)
+
 ## Rationale
 
 Arweave differs from most block chains in providing a storage service. It is
