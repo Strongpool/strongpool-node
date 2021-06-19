@@ -1,6 +1,6 @@
 ---
 
-name: Lint
+name: lint
 on: [push]
 jobs:
   lint:
@@ -21,7 +21,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
 
       ##
-      ## Environment setup
+      ## Setup
       ##
 
       - name: Download clj-kondo
