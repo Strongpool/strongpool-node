@@ -1,6 +1,6 @@
 (ns net.strongpool.node.tasks
   (:require
-   [babashka.process :refer [$ check process]]
+   [babashka.process :refer [check process]]
    [clojure.java.io :as io]
    [clojure.pprint :refer [pprint]]
    [clojure.string :as str]
