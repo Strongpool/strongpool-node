@@ -1,33 +1,43 @@
 # Strongpool Node
 
+TODO one or two sentence description
+
 [![lint](https://github.com/Strongpool/strongpool-node/actions/workflows/lint.yml/badge.svg)](https://github.com/Strongpool/strongpool-node/actions/workflows/lint.yml)
 
 ## Rationale
 
-Arweave differs from most block chains in providing a storage service. It is
-expected that projects building on Arweave will want to run their own Arweave
-nodes for additional assurance of access to their data and lower latency. The
-Strongpool Node aims to make that as painless as possible by providing a safe,
-ops friendly, batteries included, way to run Arweave nodes.
+Arweave differs from other crypto currencies in providing a permanent immutable
+storage service in addition to a token that can be used as a store of value. As
+such, those building on Arweave are likely to care both about the security of
+the token and access to the data in the network. While adding one or two nodes
+to the Arweave network adds only marginal additional hashing power to secure the
+token, it can make a large difference in how quickly and reliably data can be
+accessed for a given purpose or at a particular location. Given this dynamic, we
+expect many Arweave developers will either run their own nodes or use a service
+or protocol that guarantees nodes with a given set of properties are running
+(e.g. in a particular geographic location and having copies of certain parts of
+the Permaweb). By providing a user and operationally friendly bundling of the
+Arweave server and supporting services, the Strongpool node seeks to become the
+preferred way for those developers and others interested in Arweave as a
+permanent storage system to run Arweave nodes.
 
-## Features
-
-### Implemented
+## Current Features
 
 - User friendly node control interface
-- Enhanced config validation
+- Improved config validation
 - Containerized Arweave server
 - Server healthcheck
-- Clear licensing
-
-### Planned
-
-- Caching reverse proxy
-- Bundled gateway
 
 ## Getting Started
 
-1. Clone the `stable` branch of this repo: `git clone -b stable --depth 1 https://github.com/Strongpool/strongpool-node.git`
-2. If you have existing miner data, copy it into `data/` in the `strongpool-node` directory.
-3. Copy `config-example.edn` to `config.edn` in the `stongpool-node` directory and edit it to set your mining address.
-4. Start the miner by running `./spnctl start`.
+1. Clone the `stable` branch of this repo: `git clone -b stable --depth 1
+   https://github.com/Strongpool/strongpool-node.git`
+2. If you have existing miner data, copy it into `data/` in the
+   `strongpool-node` directory.
+3. Copy `config/stronngpool-example.edn` to `config/strongpool.edn` in the
+   `stongpool-node` directory and edit it to set your mining address.
+4. Start the node by running `./spnctl start`.
+
+## Other Commands
+
+TODO
