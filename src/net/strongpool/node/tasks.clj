@@ -1,22 +1,12 @@
 (ns net.strongpool.node.tasks
   (:require
-   [clojure.java.shell :as shell]
+   [babashka.process :refer [$ check process]]
+   [clojure.java.io :as io]
    [clojure.pprint :refer [pprint]]
    [clojure.string :as str]
    [net.strongpool.node.config :as config]))
 
-;; TODO stream shell output
-
-(defn checked-sh [& args]
-  (let [res (apply shell/sh args)]
-    (if (not= 0 (:exit res))
-      (throw (ex-info "Error returned from shell command" res))
-      res)))
-
-;; TODO determine why 'bash -c' is needed to get $PATH right
-
-;; TODO add 'dc' (docker-compose) command
-
+;; TODO generate vector rather than string of args
 (defn arweave-args [config]
   (cond-> ""
     (:mine? config)
@@ -33,26 +23,40 @@
               (str/join " peer ")
               (str "peer ")))))
 
+;; TODO unified handling of exceptions thrown by 'check'
+
 (defn start []
   (when-let [config (config/validated-load)]
-    (let [args (arweave-args config)
-          cmd (str "ARWEAVE_ARGS='" args "' docker-compose up -d")]
+    (let [args (arweave-args config)]
       (print "Staring Stronpool node... ")
-      (checked-sh "bash" "-c" cmd)
+      (-> (process ["docker-compose" "up" "-d"] {:out :string
+                                                 :env {:ARWEAVE_ARGS args}})
+          check
+          :out
+          print)
       (println "started."))))
 
 (defn stop []
   (print "Stopping Stronpool node... ")
-  (checked-sh "bash" "-c" "docker-compose exec -d arweave /arweave/bin/stop")
-  (println "stopped.") ;; TODO wait for arweave service to actually stop
-  )
+  (-> (process ["docker-compose" "exec" "-d" "arweave" "/arweave/bin/stop"] {:out :string})
+      check
+      :out
+      print)
+  ;; TODO wait for arweave service to actually stop
+  (println "stopped."))
 
 (defn logs []
-  (-> (checked-sh "bash" "-c" "docker-compose logs")
-      :out
-      println))
+  (let [p (process ["docker-compose" "logs"]) ]
+    (with-open [rdr (io/reader (:out p))]
+      (binding [*in* rdr]
+        (loop []
+          (when-let [line (read-line)]
+            (println line)
+            (recur)))))))
 
 (defn validate-config []
   (when-let [config (config/validated-load)]
     (println "Valid Strongpool config:")
     (pprint config)))
+
+;; TODO add 'dc' (docker-compose) command
