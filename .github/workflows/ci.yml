@@ -124,7 +124,7 @@ jobs:
       ##
 
       - name: Run unit tests
-        run: ./bin/kaocha
+        run: ./bin/kaocha --plugin cloverage
 
       - uses: codecov/codecov-action@v1
         with:
