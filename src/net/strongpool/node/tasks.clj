@@ -28,7 +28,7 @@
 (defn start []
   (when-let [config (config/validated-load)]
     (let [args (arweave-args config)]
-      (print "Staring Stronpool node... ")
+      (println "Starting Strongpool node... ")
       ;; TODO stream output
       (-> (process ["docker-compose" "up" "-d"]
                    {:out :string
@@ -39,10 +39,10 @@
           check
           :out
           print)
-      (println "started."))))
+      (println "Strongpool node started."))))
 
 (defn stop []
-  (print "Stopping Stronpool node... ")
+  (println "Stopping Strongpool node... ")
   (when-let [config (config/validated-load)]
     ;; TODO stream output
     (-> (process ["docker-compose" "exec" "-d" "arweave" "/arweave/bin/stop"]
@@ -54,7 +54,7 @@
         :out
         print)
     ;; TODO wait for arweave service to actually stop
-    (println "stopped.")))
+    (println "Strongpool node stopped.")))
 
 (defn logs []
   (let [p (process ["docker-compose" "logs"]) ]
