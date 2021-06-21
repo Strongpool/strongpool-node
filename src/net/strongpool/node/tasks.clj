@@ -29,9 +29,11 @@
   (when-let [config (config/validated-load)]
     (let [args (arweave-args config)]
       (print "Staring Stronpool node... ")
+      ;; TODO stream output
       (-> (process ["docker-compose" "up" "-d"]
                    {:out :string
-                    :env {:ARWEAVE_ARGS args
+                    :env {:PATH (System/getenv "PATH")
+                          :ARWEAVE_ARGS args
                           :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
                                              (get-in config [:arweave :image]))}})
           check
@@ -41,12 +43,18 @@
 
 (defn stop []
   (print "Stopping Stronpool node... ")
-  (-> (process ["docker-compose" "exec" "-d" "arweave" "/arweave/bin/stop"] {:out :string})
-      check
-      :out
-      print)
-  ;; TODO wait for arweave service to actually stop
-  (println "stopped."))
+  (when-let [config (config/validated-load)]
+    ;; TODO stream output
+    (-> (process ["docker-compose" "exec" "-d" "arweave" "/arweave/bin/stop"]
+                 {:out :string
+                  :env {:PATH (System/getenv "PATH")
+                        :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
+                                           (get-in config [:arweave :image]))}})
+        check
+        :out
+        print)
+    ;; TODO wait for arweave service to actually stop
+    (println "stopped.")))
 
 (defn logs []
   (let [p (process ["docker-compose" "logs"]) ]
