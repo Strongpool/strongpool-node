@@ -1,5 +1,5 @@
 # Clojure
-/.clj-kondo
+/.clj-kondo/.cache
 /.cpcache
 /.nrepl-port
 
