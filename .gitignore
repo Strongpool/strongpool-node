@@ -1,6 +1,7 @@
 # Clojure
 /.clj-kondo
 /.cpcache
+/.nrepl-port
 
 # Binaries
 /bin/bb
