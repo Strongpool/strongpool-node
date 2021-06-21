@@ -5,6 +5,7 @@ The Strongpool node is a user and operationally friendly bundling of the
 services.
 
 [![CI](https://github.com/Strongpool/strongpool-node/actions/workflows/ci.yml/badge.svg)](https://github.com/Strongpool/strongpool-node/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/Strongpool/strongpool-node/branch/main/graph/badge.svg?token=J4W4BGZ6KK)](https://codecov.io/gh/Strongpool/strongpool-node)
 
 ## Rationale
 
