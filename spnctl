@@ -35,7 +35,7 @@ if [ "${min_docker_compose_version}" != "$(echo -e "${installed_docker_compose_v
     curl -sS -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o "${docker_compose}"
 
     echo "Verify checksum..."
-    if ! sha256sum -c .docker-compose.checksum; then
+    if ! sha256sum -c bin/.docker-compose.checksum; then
         rm "${docker_compose}"
         exit 1
     fi
@@ -60,7 +60,7 @@ if [ "${babashka_version}" != "$(echo -e "${installed_babashka_version}\n${babas
     rm "${bb_tgz}"
 
     echo "Verify checksum..."
-    if ! sha256sum -c .bb.checksum; then
+    if ! sha256sum -c bin/.bb.checksum; then
         rm "${bb}"
         exit 1
     fi
