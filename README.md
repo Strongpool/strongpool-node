@@ -8,20 +8,21 @@ services.
 
 ## Rationale
 
-Arweave differs from other crypto currencies in providing a permanent immutable
-storage service in addition to a token that can be used as a store of value. As
-such, those building on Arweave are likely to care both about the security of
-the token and access to the data in the network. While adding one or two nodes
-to the Arweave network adds only marginal additional hashing power to secure the
-token, it can make a large difference in how quickly and reliably data can be
-accessed for a given purpose or at a particular location. Given this dynamic, we
-expect many Arweave developers will either run their own nodes or use a service
-or protocol that guarantees nodes with a given set of properties are running
-(e.g. in a particular geographic location and having copies of certain parts of
-the Permaweb). By providing a user and operationally friendly bundling of the
-Arweave server and supporting services, the Strongpool node seeks to become the
-preferred way for those developers and others interested in Arweave as a
-permanent storage system to run Arweave nodes.
+[Arweave](https://www.arweave.org/) differs from other crypto currencies in
+providing a permanent immutable storage service in addition to a token that can
+be used as a store of value. As such, those building on Arweave are likely to
+care both about the security of the token and access to the data in the network.
+While adding one or two nodes to the Arweave network adds only marginal
+additional hashing power to secure the token, it can make a large difference in
+how quickly and reliably data can be accessed for a given purpose or at a
+particular location. Given this dynamic, we expect many Arweave developers will
+either run their own nodes or use a service or protocol that guarantees nodes
+with a given set of properties are running (e.g. in a particular geographic
+location and having copies of certain parts of the Permaweb). By providing a
+user and operationally friendly bundling of the Arweave server and supporting
+services, the Strongpool node seeks to become the preferred way for those
+developers and others interested in Arweave as a permanent storage system to run
+Arweave nodes.
 
 ## Status
 
