@@ -1,6 +1,8 @@
 # Strongpool Node
 
-TODO one or two sentence description
+The Strongpool node is a user and operationally friendly bundling of the
+[Arweave server](https://github.com/ArweaveTeam/arweave) and supporting
+services.
 
 [![lint](https://github.com/Strongpool/strongpool-node/actions/workflows/lint.yml/badge.svg)](https://github.com/Strongpool/strongpool-node/actions/workflows/lint.yml)
 
