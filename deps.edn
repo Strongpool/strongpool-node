@@ -3,4 +3,5 @@
         babashka/process {:mvn/version "0.0.2"}}
  :aliases
  {:test
-  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}}}}}
+  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}
+                lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}}}}}
