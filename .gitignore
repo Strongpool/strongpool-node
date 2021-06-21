@@ -2,6 +2,7 @@
 /.clj-kondo/.cache
 /.cpcache
 /.nrepl-port
+/target
 
 # Binaries
 /bin/bb
