@@ -1,6 +1,6 @@
 ---
 
-name: lint
+name: CI
 on: [push]
 jobs:
   lint:
@@ -24,7 +24,7 @@ jobs:
       ## Setup
       ##
 
-      - name: Download clj-kondo
+      - name: Install clj-kondo
         uses: DeLaGuardo/setup-clj-kondo@master
         with:
           version: 2021.06.01
@@ -32,7 +32,7 @@ jobs:
       - name: Install shellcheck and yamllint
         run: sudo apt-get install shellcheck yamllint
 
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       ##
       ## Lint steps
@@ -46,6 +46,85 @@ jobs:
 
       - name: Run yamllint
         run: yamllint -s .github/workflows docker-compose.yaml
+
+      ##
+      ## Completion notifications
+      ##
+
+      # Updates existing message from the first step
+      - name: Notify Slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: dev-log
+          status: SUCCESS
+          color: good
+
+      # Updates existing message from the first step
+      - name: Notify Slack failure
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: dev-log
+          status: FAILED
+          color: danger
+
+      # For notification purposes, sends to a separate channel on failure
+      - name: Notify Slack failure (build failures channel)
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: build-failures
+          status: FAILED
+          color: danger
+
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      ##
+      ## Start notification
+      ##
+
+      - name: Notify Slack start
+        uses: voxmedia/github-action-slack-notify-build@v1
+        id: slack
+        with:
+          channel: dev-log
+          status: STARTING
+          color: warning
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+
+      ##
+      ## Setup
+      ##
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+
+      - name: Install Clojure
+        uses: DeLaGuardo/setup-clojure@3.4
+        with:
+          cli: 1.10.3.855
+
+      - uses: actions/checkout@v2
+
+      ##
+      ## Testing steps
+      ##
+
+      - name: Run unit tests
+        run: ./bin/kaocha
 
       ##
       ## Completion notifications
