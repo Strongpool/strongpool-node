@@ -30,7 +30,8 @@ Arweave nodes.
 
 It is currently in use and should not cause any harm to your data (backups still
 recommended). However, it provides minimal functionality beyond a marginally
-better getting started experience.
+better getting started experience. It is being made publicly available to get
+early feedback from those interested in its future development.
 
 ## Current Features
 
