@@ -3,7 +3,7 @@
 name: unit tests
 on: [push]
 jobs:
-  lint:
+  unit_tests:
     runs-on: ubuntu-latest
     steps:
       ##
@@ -41,7 +41,7 @@ jobs:
       ##
 
       - name: Run unit tests
-        run: ./bin/koacha
+        run: ./bin/kaocha
 
       ##
       ## Completion notifications
