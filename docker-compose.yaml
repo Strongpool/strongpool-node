@@ -3,7 +3,7 @@
 version: '3.0'
 services:
   arweave:
-    image: ghcr.io/strongpool/arweave:latest
+    image: ${ARWEAVE_IMAGE}
     restart: on-failure
     ports:
       - 1984:1984

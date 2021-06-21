@@ -29,8 +29,11 @@
   (when-let [config (config/validated-load)]
     (let [args (arweave-args config)]
       (print "Staring Stronpool node... ")
-      (-> (process ["docker-compose" "up" "-d"] {:out :string
-                                                 :env {:ARWEAVE_ARGS args}})
+      (-> (process ["docker-compose" "up" "-d"]
+                   {:out :string
+                    :env {:ARWEAVE_ARGS args
+                          :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
+                                             (get-in config [:arweave :image]))}})
           check
           :out
           print)

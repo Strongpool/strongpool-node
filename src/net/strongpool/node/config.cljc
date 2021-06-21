@@ -28,7 +28,8 @@
 (def base-config
   {:mine? true
    :arweave
-   {:peers #{"188.166.200.45"
+   {:image "ghcr.io/strongpool/arweave:20210620_165802-g17f314b"
+    :peers #{"188.166.200.45"
              "188.166.192.169"
              "163.47.11.64"
              "139.59.51.59"
@@ -37,6 +38,7 @@
 (def config-filename "config/strongpool.edn")
 
 (defn load [filename]
+  ;; TODO throw a useful error if the config is missing
   (if (fs/exists? filename)
     (->> filename
          #_:clj-kondo/ignore
