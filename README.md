@@ -23,6 +23,14 @@ Arweave server and supporting services, the Strongpool node seeks to become the
 preferred way for those developers and others interested in Arweave as a
 permanent storage system to run Arweave nodes.
 
+## Status
+
+**Alpha**
+
+It is currently in use and should not cause any harm to your data (backups still
+recommended). However, it provides minimal functionality beyond a marginally
+better getting started experience.
+
 ## Current Features
 
 - User friendly node control interface
