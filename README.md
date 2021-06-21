@@ -38,6 +38,28 @@ permanent storage system to run Arweave nodes.
    `stongpool-node` directory and edit it to set your mining address.
 4. Start the node by running `./spnctl start`.
 
-## Other Commands
+## Usage
 
-TODO
+### Start the node
+
+```
+$ ./spnctl start
+Starting Strongpool node...
+Strongpool node started.
+```
+
+### Stop the node
+
+```
+./spnctl stop
+Stopping Strongpool node...
+Strongpool node stopped.
+```
+
+### Show logs
+
+```
+./spnctl logs
+arweave_1  | Launching Erlang Virtual Machine...
+arweave_1  | Exec: /arweave/erts-11.1.4/bin/erlexec -noinput +Bd -boot /arweave/releases/2.4.2.0/start -mode embedded -boot_var SYSTEM_LIB_DIR /arweave/lib -config /arweave/releases/2.4.2.0/sys.config -args_file /arweave/releases/2.4.2.0/vm.args -- foreground +Ktrue +A20 +SDio20 +sbwtvery_long +sbwtdcpuvery_long +sbwtdiovery_long +swtvery_low +swtdcpuvery_low +swtdiovery_low +Bi -run ar main data_dir /data mine mining_addr ...
+```
