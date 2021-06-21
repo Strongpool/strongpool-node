@@ -4,6 +4,8 @@ The Strongpool node is a user and operationally friendly bundling of the
 [Arweave server](https://github.com/ArweaveTeam/arweave) and supporting
 services.
 
+[![CI](https://github.com/Strongpool/strongpool-node/actions/workflows/ci.yml/badge.svg)](https://github.com/Strongpool/strongpool-node/actions/workflows/ci.yml)
+
 ## Rationale
 
 [Arweave](https://www.arweave.org/) differs from other crypto currencies in
