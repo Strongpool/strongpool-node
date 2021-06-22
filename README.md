@@ -43,7 +43,7 @@ early feedback from those interested in its future development.
 
 ## Getting Started
 
-1. [Install Docker](https://docs.docker.com/engine/install/).
+1. Follow the [official instructions](https://docs.docker.com/engine/install/) to install Docker.
 2. Clone the `stable` branch of this repo: `git clone -b stable https://github.com/Strongpool/strongpool-node.git`
 3. If you have existing miner data, copy it into `data/` in the `strongpool-node` directory.
 4. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the `stongpool-node` directory and edit it to set your mining address.
