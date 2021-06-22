@@ -4,4 +4,5 @@
  :aliases
  {:test
   {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}
-                lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}}}}}
+                lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}
+                lambdaisland/kaocha-cucumber {:mvn/version "0.0-53"}}}}}
