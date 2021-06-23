@@ -90,14 +90,6 @@ jobs:
       ## Discord completion notifications
       ##
 
-      - name: Notify Discord success
-        uses: rjstone/discord-webhook-notify@v1
-        if: success()
-        with:
-          severity: info
-          details: Lint succeeded!
-          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
-
       - name: Notify Discord failure
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
@@ -201,14 +193,6 @@ jobs:
       ##
       ## Discord completion notifications
       ##
-
-      - name: Notify Discord success
-        uses: rjstone/discord-webhook-notify@v1
-        if: success()
-        with:
-          severity: info
-          details: Unit tests succeeded!
-          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
 
       - name: Notify Discord failure
         uses: rjstone/discord-webhook-notify@v1
