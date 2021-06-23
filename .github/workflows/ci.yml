@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       ##
-      ## Start notification
+      ## Slack start notification
       ##
 
       - name: Notify Slack start
@@ -132,7 +132,7 @@ jobs:
           flags: unittests
 
       ##
-      ## Completion notifications
+      ## Slack completion notifications
       ##
 
       # Updates existing message from the first step
@@ -169,3 +169,31 @@ jobs:
           channel: build-failures
           status: FAILED
           color: danger
+
+      ##
+      ## Discord completion notifications
+      ##
+
+      - name: Notify Discord success
+        uses: rjstone/discord-webhook-notify@v1
+        if: success()
+        with:
+          severity: info
+          details: CI Succeeded!
+          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
+
+      - name: Notify Discord failure
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+          severity: error
+          details: CI Failed!
+          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
+
+      - name: Notify Discord cancelled
+        uses: rjstone/discord-webhook-notify@v1
+        if: cancelled()
+        with:
+          severity: warn
+          details: CI Cancelled!
+          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
