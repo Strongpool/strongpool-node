@@ -86,6 +86,34 @@ jobs:
           status: FAILED
           color: danger
 
+      ##
+      ## Discord completion notifications
+      ##
+
+      - name: Notify Discord success
+        uses: rjstone/discord-webhook-notify@v1
+        if: success()
+        with:
+          severity: info
+          details: Lint succeeded!
+          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
+
+      - name: Notify Discord failure
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+          severity: error
+          details: Lint failed!
+          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
+
+      - name: Notify Discord canceled
+        uses: rjstone/discord-webhook-notify@v1
+        if: cancelled()
+        with:
+          severity: warn
+          details: Lint cancelled!
+          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
+
   unit_tests:
     runs-on: ubuntu-latest
     steps:
@@ -179,7 +207,7 @@ jobs:
         if: success()
         with:
           severity: info
-          details: CI Succeeded!
+          details: Unit tests succeeded!
           webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
 
       - name: Notify Discord failure
@@ -187,13 +215,13 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: CI Failed!
+          details: Unit tests failed!
           webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
 
-      - name: Notify Discord cancelled
+      - name: Notify Discord canceled
         uses: rjstone/discord-webhook-notify@v1
         if: cancelled()
         with:
           severity: warn
-          details: CI Cancelled!
+          details: Unit tests canceled!
           webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
