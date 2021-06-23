@@ -18,6 +18,8 @@ command -v docker > /dev/null || die "Missing required dependency: docker\nPleas
 
 mkdir -p bin data
 
+# TODO only use system docker-compose on NixOS (no reason to on other platforms)
+
 # Ensure expected version of docker-compose is available
 
 docker_compose=$(command -v docker-compose || true)
