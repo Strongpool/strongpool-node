@@ -6,6 +6,7 @@ services.
 
 [![CI](https://github.com/Strongpool/strongpool-node/actions/workflows/ci.yml/badge.svg)](https://github.com/Strongpool/strongpool-node/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/Strongpool/strongpool-node/branch/main/graph/badge.svg?token=J4W4BGZ6KK)](https://codecov.io/gh/Strongpool/strongpool-node)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FStrongpool%2Fstrongpool-node.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FStrongpool%2Fstrongpool-node?ref=badge_shield)
 
 ## Rationale
 
@@ -74,3 +75,7 @@ Strongpool node stopped.
 arweave_1  | Launching Erlang Virtual Machine...
 arweave_1  | Exec: /arweave/erts-11.1.4/bin/erlexec -noinput +Bd -boot /arweave/releases/2.4.2.0/start -mode embedded -boot_var SYSTEM_LIB_DIR /arweave/lib -config /arweave/releases/2.4.2.0/sys.config -args_file /arweave/releases/2.4.2.0/vm.args -- foreground +Ktrue +A20 +SDio20 +sbwtvery_long +sbwtdcpuvery_long +sbwtdiovery_long +swtvery_low +swtdcpuvery_low +swtdiovery_low +Bi -run ar main data_dir /data mine mining_addr ...
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FStrongpool%2Fstrongpool-node.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FStrongpool%2Fstrongpool-node?ref=badge_large)
