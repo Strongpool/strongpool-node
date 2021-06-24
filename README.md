@@ -41,13 +41,24 @@ early feedback from those interested in its future development.
 - Containerized Arweave server
 - Server healthcheck
 
+## Prerequisites
+
+- A computer or virtual machine with Linux installed. Ubuntu 20.04 is
+  recommended, but other distributions should also work.
+- Free disk space for Arweave data. For mining, you will want at least 4TB free.
+- Docker installed. On Ubuntu 20.04, run `sudo apt install docker.io` to install
+  it. For other distributions, follow the official Docker [install
+  instructions](https://docs.docker.com/engine/install/).
+
 ## Getting Started
 
-1. Follow the [official instructions](https://docs.docker.com/engine/install/) to install Docker.
-2. Clone the `stable` branch of this repo: `git clone -b stable https://github.com/Strongpool/strongpool-node.git`
-3. If you have existing miner data, copy it into `data/` in the `strongpool-node` directory.
-4. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the `stongpool-node` directory and edit it to set your mining address.
-5. Start the node by running `./spnctl start`.
+1. Clone the `stable` branch of this repo: `git clone -b stable
+   https://github.com/Strongpool/strongpool-node.git`
+2. If you have existing miner data, copy it into `data/` in the
+   `strongpool-node` directory.
+3. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the
+   `stongpool-node` directory and edit it to set your mining address.
+4. Start the node by running `./spnctl start`.
 
 ## Usage
 
