@@ -5,9 +5,9 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - dockerd-entrypoint.sh &
-      - until docker info >/dev/null 2>&1; do sleep 1; done
-      - eval $(aws ecr get-login --no-include-email || echo "false")
+      #- dockerd-entrypoint.sh &
+      #- until docker info >/dev/null 2>&1; do sleep 1; done
+      #- eval $(aws ecr get-login --no-include-email || echo "false")
 
   build:
     commands:
