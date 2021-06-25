@@ -16,6 +16,7 @@ phases:
 
   build:
     commands:
+      - export PATH="$(pwd)/bin:$PATH"
       - ./bin/kaocha features
 
 cache:
