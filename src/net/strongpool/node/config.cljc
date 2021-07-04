@@ -20,10 +20,10 @@
 (s/def ::extra-args (s/coll-of ::extra-args))
 (s/def ::arweave (s/keys :req-un [::peers]
                          :opt [::extra-args]))
-(s/def ::node-config (s/keys :req-un [;; TODO only require miner-address if mining
-                                      ::mine?
-                                      ::miner-address
-                                      ::arweave]))
+(s/def ::node-config (s/keys :req-un [::mine?
+                                      ::arweave]
+                             ;; TODO require miner address if mining
+                             :opt-un [::miner-address]))
 
 (def base-config
   {:mine? true
