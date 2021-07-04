@@ -44,7 +44,11 @@
          #_:clj-kondo/ignore
          slurp
          edn/read-string
-         (merge-with merge base-config))
+         (merge-with (fn [x y]
+                       (if (map? x)
+                         (merge x y)
+                         y))
+                     base-config))
     base-config))
 
 (defn validated-load
