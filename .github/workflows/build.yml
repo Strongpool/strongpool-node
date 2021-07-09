@@ -1,13 +1,13 @@
 ---
 
-name: CI
+name: Build
 on: [push]
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
       ##
-      ## Slack start notification
+      ## Start notification
       ##
 
       - name: Notify Slack start
@@ -21,7 +21,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
 
       ##
-      ## Setup
+      ## Lint setup
       ##
 
       - name: Install clj-kondo
@@ -48,83 +48,7 @@ jobs:
         run: yamllint -s .github/workflows docker-compose.yaml
 
       ##
-      ## Completion notifications
-      ##
-
-      # Updates existing message from the first step
-      - name: Notify Slack success
-        if: success()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          message_id: ${{ steps.slack.outputs.message_id }}
-          channel: dev-log
-          status: SUCCESS
-          color: good
-
-      # Updates existing message from the first step
-      - name: Notify Slack failure
-        if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          message_id: ${{ steps.slack.outputs.message_id }}
-          channel: dev-log
-          status: FAILED
-          color: danger
-
-      # For notification purposes, sends to a separate channel on failure
-      - name: Notify Slack failure (build failures channel)
-        if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: build-failures
-          status: FAILED
-          color: danger
-
-      ##
-      ## Discord completion notifications
-      ##
-
-      - name: Notify Discord failure
-        uses: rjstone/discord-webhook-notify@v1
-        if: failure()
-        with:
-          severity: error
-          details: Lint failed!
-          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
-
-      - name: Notify Discord canceled
-        uses: rjstone/discord-webhook-notify@v1
-        if: cancelled()
-        with:
-          severity: warn
-          details: Lint cancelled!
-          webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
-
-  unit_tests:
-    runs-on: ubuntu-latest
-    steps:
-      ##
-      ## Start notification
-      ##
-
-      - name: Notify Slack start
-        uses: voxmedia/github-action-slack-notify-build@v1
-        id: slack
-        with:
-          channel: dev-log
-          status: STARTING
-          color: warning
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-
-      ##
-      ## Setup
+      ## Test setup
       ##
 
       - name: Setup Java
@@ -140,7 +64,7 @@ jobs:
       - uses: actions/checkout@v2
 
       ##
-      ## Testing steps
+      ## Test steps
       ##
 
       - name: Run unit tests
@@ -199,7 +123,7 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: Unit tests failed!
+          details: Build failed!
           webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
 
       - name: Notify Discord canceled
@@ -207,5 +131,5 @@ jobs:
         if: cancelled()
         with:
           severity: warn
-          details: Unit tests canceled!
+          details: Build canceled!
           webhookUrl: ${{ secrets.DISCORD_DEV_LOG_WEBHOOK }}
