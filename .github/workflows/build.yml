@@ -21,6 +21,13 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
 
       ##
+      ## Checkout repo
+      ##
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      ##
       ## Lint setup
       ##
 
@@ -31,8 +38,6 @@ jobs:
 
       - name: Install shellcheck and yamllint
         run: sudo apt-get install shellcheck yamllint
-
-      - uses: actions/checkout@v2
 
       ##
       ## Lint steps
@@ -56,12 +61,10 @@ jobs:
         with:
           java-version: 1.11
 
-      - name: Install Clojure
+      - name: Setup Clojure
         uses: DeLaGuardo/setup-clojure@3.4
         with:
           cli: 1.10.3.855
-
-      - uses: actions/checkout@v2
 
       ##
       ## Test steps
@@ -70,7 +73,8 @@ jobs:
       - name: Run unit tests
         run: ./bin/kaocha unit --plugin cloverage
 
-      - uses: codecov/codecov-action@v1
+      - name: Publish code coverage
+        uses: codecov/codecov-action@v1
         with:
           files: target/coverage/codecov.json
           flags: unittests
