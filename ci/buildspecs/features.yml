@@ -8,15 +8,9 @@ phases:
       - dockerd-entrypoint.sh &
       - until docker info >/dev/null 2>&1; do sleep 1; done
 
-      # TODO remove docker-compose to test install via spnctl
-      - apk add bash curl docker-compose openjdk11
-
-      - curl -O https://download.clojure.org/install/linux-install-1.10.3.855.sh
-      - chmod +x linux-install-1.10.3.855.sh
-      - ./linux-install-1.10.3.855.sh
-
   build:
     commands:
+      # TODO test install of docker-compose via spnctl
       - export PATH="$(pwd)/bin:$PATH"
       - ./bin/kaocha features
 
