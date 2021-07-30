@@ -53,7 +53,7 @@ early feedback from those interested in its future development.
 
 ## Getting Started
 
-1. Clone the `stable` branch of this repo: `git clone -b stable
+1. Clone the `main` branch of this repo: `git clone -b main
    https://github.com/Strongpool/strongpool-node.git`
 2. If you have existing miner data, copy it into `data/` in the
    `strongpool-node` directory.
