@@ -11,6 +11,10 @@ services:
       - type: bind
         source: ./data
         target: /data
+    # TODO add network admin capability
+    environment:
+      - INGRESS_RATE
+      - EGRESS_RATE
     ulimits:
       nofile:
         soft: 1048576

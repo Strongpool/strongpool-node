@@ -17,9 +17,11 @@
 (s/def ::peers (s/coll-of ::ipv4-address))
 (s/def ::mine? boolean?)
 (s/def ::extra-arg (s/and string? not-empty))
+(s/def ::ingress-rate (s/and string? not-empty))
+(s/def ::egress-rate (s/and string? not-empty))
 (s/def ::extra-args (s/coll-of ::extra-args))
 (s/def ::arweave (s/keys :req-un [::peers]
-                         :opt [::extra-args]))
+                         :opt [::extra-args :ingress-rate :egress-rate]))
 (s/def ::node-config (s/keys :req-un [::mine?
                                       ::arweave]
                              ;; TODO require miner address if mining

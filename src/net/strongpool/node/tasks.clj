@@ -23,6 +23,15 @@
               (str/join " peer ")
               (str "peer ")))))
 
+(defn arweave-env-vars [config]
+  (let [{:keys [ingress-rate egress-rate]} (:arweave config)]
+    (cond-> {}
+      ingress-rate
+      (assoc :INGRESS_RATE ingress-rate)
+
+      egress-rate
+      (assoc :EGRESS_RATE egress-rate))))
+
 ;; TODO unified handling of exceptions thrown by 'check'
 
 (defn start []
@@ -32,10 +41,11 @@
       ;; TODO stream output
       (-> (process ["docker-compose" "up" "-d"]
                    {:out :string
-                    :env {:PATH (System/getenv "PATH")
-                          :ARWEAVE_ARGS args
-                          :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
-                                             (get-in config [:arweave :image]))}})
+                    :env (merge {:PATH (System/getenv "PATH")
+                                 :ARWEAVE_ARGS args
+                                 :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
+                                                    (get-in config [:arweave :image]))}
+                                (arweave-env-vars config))})
           check
           :out
           print)
