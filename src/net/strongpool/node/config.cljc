@@ -21,7 +21,7 @@
 (s/def ::egress-rate (s/and string? not-empty))
 (s/def ::extra-args (s/coll-of ::extra-args))
 (s/def ::arweave (s/keys :req-un [::peers]
-                         :opt [::extra-args :ingress-rate :egress-rate]))
+                         :opt [::extra-args ::ingress-rate ::egress-rate]))
 (s/def ::node-config (s/keys :req-un [::mine?
                                       ::arweave]
                              ;; TODO require miner address if mining
