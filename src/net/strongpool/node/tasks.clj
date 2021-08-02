@@ -4,10 +4,8 @@
    [clojure.java.io :as io]
    [clojure.pprint :refer [pprint]]
    [clojure.string :as str]
-   [net.strongpool.node.config :as config]))
-
-#?(:bb (defmacro tests [& _body])
-   :clj (require '[hyperfiddle.rcf :refer [tests]]))
+   [net.strongpool.node.config :as config]
+   [net.strongpool.node.rcf-shim :refer [tests]]))
 
 ;; TODO generate vector rather than string of args
 (defn arweave-args [config]
@@ -37,7 +35,6 @@
 
 ;; TODO unified handling of exceptions thrown by 'check'
 
-#_{:clj-kondo/ignore [:unresolved-namespace]}
 (defn start []
   (when-let [config (config/validated-load)]
     (let [args (arweave-args config)]
@@ -70,7 +67,6 @@
     ;; TODO wait for arweave service to actually stop
     (println "Strongpool node stopped.")))
 
-#_{:clj-kondo/ignore [:unresolved-symbol]}
 (defn logs []
   (let [p (process ["docker-compose" "logs"]) ]
     (with-open [rdr (io/reader (:out p))]

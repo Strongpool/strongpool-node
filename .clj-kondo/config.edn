@@ -1,6 +1,8 @@
-{:linters
+{:skip-comments true
+ :linters
  {:unresolved-symbol
   {:exclude [(lambdaisland.cucumber.dsl/Given)
              (lambdaisland.cucumber.dsl/When)
              (lambdaisland.cucumber.dsl/Then)
-             (lambdaisland.cucumber.dsl/And)]}}}
+             (lambdaisland.cucumber.dsl/And)
+             (net.strongpool.node.rcf-shim/tests)]}}}
