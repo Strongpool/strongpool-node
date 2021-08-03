@@ -1,12 +1,7 @@
 #kaocha/v1
-{:tests [{:id           :unit
-          :source-paths ["src"]
-          :test-paths   ["test/unit"]
-          :ns-patterns  [".*"]}
-         {:id                  :features
+{:tests [{:id                  :features
           :type                :kaocha.type/cucumber
           :source-paths        ["src"]
           :test-paths          ["test/features"]
           :cucumber/glue-paths ["test/features/step_definitions"]}]
- :plugins [:kaocha.plugin/notifier]
- :cloverage/opts {:codecov? true}}
+ :plugins [:kaocha.plugin/notifier]}
