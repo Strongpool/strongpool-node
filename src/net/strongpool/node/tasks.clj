@@ -25,11 +25,8 @@
               (str "peer ")))))
 
 (defn arweave-env-vars [config]
-  (let [{:keys [ingress-rate egress-rate]} (:arweave config)]
+  (let [{:keys [egress-rate]} (:arweave config)]
     (cond-> {}
-      ingress-rate
-      (assoc :INGRESS_RATE ingress-rate)
-
       egress-rate
       (assoc :EGRESS_RATE egress-rate))))
 
