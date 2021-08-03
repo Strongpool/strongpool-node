@@ -1,0 +1,18 @@
+---
+
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - dockerd-entrypoint.sh &
+      - until docker info >/dev/null 2>&1; do sleep 1; done
+
+  build:
+    commands:
+      # TODO test install of docker-compose via spnctl
+      - ./bin/feature-tests
+
+cache:
+  paths:
+    - '/root/.m2/**/*'

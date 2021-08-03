@@ -43,14 +43,8 @@ jobs:
       ## Lint steps
       ##
 
-      - name: Run clj-kondo
-        run: clj-kondo --lint src
-
-      - name: Run shellcheck
-        run: shellcheck spnctl
-
-      - name: Run yamllint
-        run: yamllint -s .github/workflows docker-compose.yaml
+      - name: Run lint script
+        run: ./bin/lint
 
       ##
       ## Test setup

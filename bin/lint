@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -ex
+
+clj-kondo --lint src
+
+shellcheck spnctl
+
+yamllint -s .github/workflows docker-compose.yaml
