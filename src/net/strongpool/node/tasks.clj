@@ -25,10 +25,10 @@
               (str "peer ")))))
 
 (defn arweave-env-vars [config]
-  (let [{:keys [egress-rate]} (:arweave config)]
+  (let [{:keys [egress-rate-limit]} (:arweave config)]
     (cond-> {}
-      egress-rate
-      (assoc :EGRESS_RATE egress-rate))))
+      egress-rate-limit
+      (assoc :EGRESS_RATE egress-rate-limit))))
 
 ;; TODO unified handling of exceptions thrown by 'check'
 
