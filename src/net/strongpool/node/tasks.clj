@@ -32,7 +32,7 @@
       (assoc :DEBUG "1")
 
       egress-rate-limit
-      (assoc :EGRESS_RATE egress-rate-limit))))
+      (assoc :EGRESS_RATE_LIMIT egress-rate-limit))))
 
 ;; TODO unified handling of exceptions thrown by 'check'
 
