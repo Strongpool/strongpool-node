@@ -25,8 +25,12 @@
               (str "peer ")))))
 
 (defn arweave-env-vars [config]
-  (let [{:keys [egress-rate-limit]} (:arweave config)]
+  (let [{:keys [debug?]} config
+        {:keys [egress-rate-limit]} (:arweave config)]
     (cond-> {}
+      debug?
+      (assoc :DEBUG "1")
+
       egress-rate-limit
       (assoc :EGRESS_RATE egress-rate-limit))))
 
