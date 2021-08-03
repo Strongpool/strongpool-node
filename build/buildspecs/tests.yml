@@ -10,8 +10,8 @@ phases:
 
   build:
     commands:
-      # TODO test install of docker-compose via spnctl
-      - ./bin/feature-tests
+      - ./bin/lint
+      - ./bin/rcf-tests
 
 cache:
   paths:

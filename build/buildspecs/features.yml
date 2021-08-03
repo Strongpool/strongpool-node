@@ -11,8 +11,7 @@ phases:
   build:
     commands:
       # TODO test install of docker-compose via spnctl
-      - export PATH="$(pwd)/bin:$PATH"
-      - ./bin/kaocha features
+      - ./bin/feature-tests
 
 cache:
   paths:
