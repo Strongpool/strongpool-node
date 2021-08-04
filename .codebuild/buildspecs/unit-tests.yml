@@ -1,0 +1,15 @@
+---
+
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  build:
+    commands:
+      - ./bin/rcf-tests
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
