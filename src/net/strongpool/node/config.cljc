@@ -29,7 +29,7 @@
 (def base-config
   {:mine? true
    :arweave
-   {:image "ghcr.io/strongpool/arweave:0047-strongpool-20210802_231131-g211dd57"
+   {:image-repo "ghcr.io/strongpool/arweave"
     :peers #{"188.166.200.45"
              "188.166.192.169"
              "163.47.11.64"

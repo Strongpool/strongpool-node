@@ -26,7 +26,7 @@
 
 (defn arweave-env-vars [config]
   (let [{:keys [debug?]} config
-        {:keys [egress-rate-limit]} (:arweave config)]
+        {:keys [image-repo egress-rate-limit]} (:arweave config)]
     (cond-> {}
       debug?
       (assoc :DEBUG "1")
@@ -45,8 +45,8 @@
                    {:out :string
                     :env (merge {:PATH (System/getenv "PATH")
                                  :ARWEAVE_ARGS args
-                                 :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
-                                                    (get-in config [:arweave :image]))}
+                                 :ARWEAVE_IMAGE_REPO (or (System/getenv "ARWEAVE_IMAGE_REPO")
+                                                         (get-in config [:arweave :image-repo]))}
                                 (arweave-env-vars config))})
           check
           :out

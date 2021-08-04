@@ -3,7 +3,7 @@
 version: '3.0'
 services:
   arweave:
-    image: ${ARWEAVE_IMAGE}
+    image: ${ARWEAVE_IMAGE_REPO}:${ARWEAVE_IMAGE_TAG}
     restart: on-failure
     ports:
       - 1984:1984
@@ -11,7 +11,6 @@ services:
       - type: bind
         source: ./data
         target: /data
-    # TODO add network admin capability
     environment:
       - INGRESS_RATE
       - EGRESS_RATE
