@@ -26,7 +26,7 @@
 
 (defn arweave-env-vars [config]
   (let [{:keys [debug?]} config
-        {:keys [image-repo egress-rate-limit]} (:arweave config)]
+        {:keys [egress-rate-limit]} (:arweave config)]
     (cond-> {}
       debug?
       (assoc :DEBUG "1")
