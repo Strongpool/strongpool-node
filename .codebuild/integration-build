@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 if git log --pretty=full -1 | grep 'skip ci'; then
   exit 0
 fi
