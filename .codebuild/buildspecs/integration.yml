@@ -1,0 +1,20 @@
+---
+
+version: 0.2
+
+env:
+  shell: bash
+  parameter-store:
+    GITHUB_ACCESS_TOKEN: '/strongpool/_/_/build/github-access-token'
+
+phases:
+  pre_build:
+    commands:
+      - git config --global user.email "builds@strongpool.net"
+      - git config --global user.name "Build Automation"
+      - git remote set-url origin "https://strongpool-builds:$GITHUB_ACCESS_TOKEN@github.com/Strongpool/strongpool-node.git"
+      - git checkout develop
+
+  build:
+    commands:
+      - ./.codebuild/integration-build
