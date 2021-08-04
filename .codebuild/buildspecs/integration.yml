@@ -14,7 +14,7 @@ phases:
       - git config --global user.name "Build Automation"
       - git remote set-url origin "https://strongpool-builds:$GITHUB_ACCESS_TOKEN@github.com/Strongpool/strongpool-node.git"
       - git checkout develop
-      - git branch --set-upstream-to origin develop
+      - git branch --set-upstream-to origin/develop
 
   build:
     commands:
