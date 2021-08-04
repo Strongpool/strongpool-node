@@ -77,7 +77,11 @@ if [[ $# = 0 ]]; then
     exit
 fi
 
+# TODO copy example config into correct place on first run
+
 PATH="$(pwd)/bin:$PATH"
 export PATH
+
+# TODO print usage on error
 
 "${bb}" run "$@"
