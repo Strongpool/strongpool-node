@@ -7,8 +7,8 @@ if git log --pretty=full -1 | grep 'skip ci'; then
 fi
 
 echo "ARWEAVE_IMAGE_TAG=$ARWEAVE_IMAGE_TAG" > .env
-./bin/feature-tests
 git add .env
-if git commit -m $'Update service container image tags\n\nskip ci'; then
+if git commit -m "Update service container image tags"; then
+  ./bin/feature-tests
   git push
 fi
