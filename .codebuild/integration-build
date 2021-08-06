@@ -9,6 +9,6 @@ fi
 echo "ARWEAVE_IMAGE_TAG=$ARWEAVE_IMAGE_TAG" > .env
 ./bin/feature-tests
 git add .env
-if git commit -m $"Update service container image tags\n\nskip ci"; then
+if git commit -m $'Update service container image tags\n\nskip ci'; then
   git push
 fi
