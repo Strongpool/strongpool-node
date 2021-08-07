@@ -26,8 +26,8 @@
   (str/join " " (arweave-args config)))
 
 (defn arweave-env-vars [config]
-  (let [{:keys [debug?]} config
-        {:keys [egress-rate-limit]} (:arweave config)]
+  (let [{:keys [arweave debug?]} config
+        {:keys [egress-rate-limit]} arweave]
     (cond-> {}
       debug?
       (assoc :DEBUG "1")
