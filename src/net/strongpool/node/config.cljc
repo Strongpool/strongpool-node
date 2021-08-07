@@ -17,9 +17,9 @@
 (s/def ::peers (s/coll-of ::ipv4-address))
 (s/def ::mine? boolean?)
 (s/def ::debug? boolean?)
-(s/def ::extra-arg (s/and string? not-empty))
+(s/def ::cli-arg (s/and string? not-empty))
 (s/def ::egress-rate-limit (s/and string? not-empty))
-(s/def ::extra-args (s/coll-of ::extra-args))
+(s/def ::extra-args (s/coll-of ::cli-arg))
 (s/def ::arweave (s/keys :req-un [::peers]
                          :opt [::extra-args ::egress-rate-limit]))
 (s/def ::node-config (s/keys :req-un [::mine? ::arweave]
