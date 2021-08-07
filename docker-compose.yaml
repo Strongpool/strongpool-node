@@ -12,7 +12,6 @@ services:
         source: ./data
         target: /data
     environment:
-      - INGRESS_RATE
       - EGRESS_RATE
     ulimits:
       nofile:
