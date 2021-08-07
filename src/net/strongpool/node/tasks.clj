@@ -58,7 +58,7 @@
   (println "Stopping Strongpool node... ")
   (when-let [config (config/validated-load)]
     ;; TODO stream output
-    (-> (process ["docker-compose" "exec" "-d" "arweave" "/arweave/bin/stop"]
+    (-> (process ["docker-compose" "exec" "-d" "arweave00" "/arweave/bin/stop"]
                  {:out :string
                   :env {:PATH (System/getenv "PATH")
                         :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
