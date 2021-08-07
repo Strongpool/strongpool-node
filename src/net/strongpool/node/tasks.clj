@@ -89,31 +89,31 @@
 
 (tests
 
- ;; Arweave args tests
+  ;; Arweave args tests
 
- (def empty-config {})
+  (def empty-config {})
 
- (arweave-args empty-config) := []
+  (arweave-args empty-config) := []
 
- (def miner-config {:mine? true
-                    :miner-address "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"})
+  (def miner-config {:mine? true
+                     :miner-address "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"})
 
- (arweave-args miner-config) :=
- ["mine" "mining_addr" "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"]
+  (arweave-args miner-config) :=
+  ["mine" "mining_addr" "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"]
 
- (def config-with-peers (-> miner-config
-                            (assoc-in [:arweave :peers] #{"188.166.200.45"
-                                                          "188.166.192.169"})))
+  (def config-with-peers (-> miner-config
+                             (assoc-in [:arweave :peers] #{"188.166.200.45"
+                                                           "188.166.192.169"})))
 
- (arweave-args config-with-peers) :=
- ["mine" "mining_addr" "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"
-  "peer" "188.166.192.169" "peer" "188.166.200.45"]
+  (arweave-args config-with-peers) :=
+  ["mine" "mining_addr" "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"
+   "peer" "188.166.192.169" "peer" "188.166.200.45"]
 
- (def config-with-extra-args (-> miner-config
-                                 (assoc-in [:arweave :extra-args] ["sync_jobs" "10"])))
+  (def config-with-extra-args (-> miner-config
+                                  (assoc-in [:arweave :extra-args] ["sync_jobs" "10"])))
 
- (arweave-args config-with-extra-args) :=
- ["mine" "mining_addr" "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"
-  "sync_jobs" "10"]
+  (arweave-args config-with-extra-args) :=
+  ["mine" "mining_addr" "Tk1NuG7Jxr9Ecgva5tWOJya2QGDOoS6hMZP0paB129c"
+   "sync_jobs" "10"]
 
- )
+  )
