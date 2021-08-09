@@ -3,7 +3,10 @@
    [babashka.process :refer [check process]]
    [clojure.string :as str]
    [clojure.test :refer [is]]
-   [lambdaisland.cucumber.dsl :refer [After Given Then]]))
+   [lambdaisland.cucumber.dsl :refer [Before After Given Then]]))
+
+(Before []
+  (-> (process ["mkdir" "-p" "data/01"] {:out :string})) check)
 
 (After []
   (-> (process ["./spnctl" "stop"] {:out :string})) check)
