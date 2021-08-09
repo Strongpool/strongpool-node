@@ -7,6 +7,7 @@ if git log --pretty=full -1 | grep 'skip ci'; then
 fi
 
 echo "ARWEAVE_IMAGE_TAG=$ARWEAVE_IMAGE_TAG" > .env
+echo "ENGINE_IMAGE_TAG=$ENGINE_IMAGE_TAG" >> .env
 git add .env
 if git commit -m "Update service container image tags"; then
   ./bin/feature-tests
