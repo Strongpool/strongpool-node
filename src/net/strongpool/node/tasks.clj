@@ -47,13 +47,17 @@
                     :env (merge {:PATH (System/getenv "PATH")
                                  :ARWEAVE_ARGS args
                                  :ARWEAVE_IMAGE_REPO (or (System/getenv "ARWEAVE_IMAGE_REPO")
-                                                         (get-in config [:arweave :image-repo]))}
+                                                         (get-in config [:arweave :image-repo]))
+                                 :ENGINE_IMAGE_REPO (or (System/getenv "ENGINE_IMAGE_REPO")
+                                                         (get-in config [:engine :image-repo]))}
                                 (arweave-env-vars config))})
           check
           :out
           print)
       (println "Strongpool node started."))))
 
+;; TODO gracfefully handle node already being down
+;; TODO maybe use down? maybe remove orphans?
 (defn stop []
   (println "Stopping Strongpool node... ")
   ;; TODO handle multiple Arweave services
@@ -67,12 +71,20 @@
         check
         :out
         print)
+    (-> (process ["docker-compose" "stop" "engine"]
+                 {:out :string
+                  :env {:PATH (System/getenv "PATH")
+                        :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
+                                           (get-in config [:arweave :image]))}})
+        check
+        :out
+        print)
     ;; TODO wait for arweave service to actually stop
     (println "Strongpool node stopped.")))
 
 ;; TODO why does this end up clearing the screen part way through
 (defn logs []
-  (let [p (process ["docker-compose" "logs"]) ]
+  (let [p (process ["docker-compose" "logs"])]
     (with-open [rdr (io/reader (:out p))]
       (binding [*in* rdr]
         (loop []
