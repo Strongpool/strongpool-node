@@ -29,6 +29,6 @@ services:
         source: ./data/01
         target: /data
     environment:
-      - INTAKE_URL=http://engine.strongpool.net/intake
+      - INTAKE_URL=https://engine.strongpool.net/intake
       - WSPORAS_PATH=/data/strongpool/arweave/wsporas
       - ENABLE_SIPHON=1
