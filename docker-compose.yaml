@@ -12,6 +12,7 @@ services:
         source: ./data/01
         target: /data
     environment:
+      - DEBUG
       - EGRESS_RATE
     ulimits:
       nofile:
