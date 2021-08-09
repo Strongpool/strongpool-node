@@ -13,7 +13,7 @@ services:
         target: /data
     environment:
       - DEBUG
-      - EGRESS_RATE
+      - EGRESS_RATE_LIMIT
     ulimits:
       nofile:
         soft: 1048576
