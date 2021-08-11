@@ -9,7 +9,7 @@ services:
       - 1984:1984
     volumes:
       - type: bind
-        source: ./data/01
+        source: ./data/arweave01
         target: /data
     environment:
       - DEBUG
@@ -25,10 +25,12 @@ services:
     image: ${ENGINE_IMAGE_REPO}:${ENGINE_IMAGE_TAG}
     restart: on-failure
     volumes:
+      # TODO mount data root instead of individual dirs
       - type: bind
-        source: ./data/01
+        source: ./data/arweave01
         target: /data
     environment:
+      # TODO move INTAKE_URL into config
       - INTAKE_URL=https://engine.strongpool.net/intake
       - WSPORAS_PATH=/data/strongpool/arweave/wsporas
       - ENABLE_SIPHON=1

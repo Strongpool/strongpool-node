@@ -1,12 +1,11 @@
 (ns net.strongpool.node.features.steps
-  (:require
-   [babashka.process :refer [check process]]
-   [clojure.string :as str]
-   [clojure.test :refer [is]]
-   [lambdaisland.cucumber.dsl :refer [Before After Given Then]]))
+  (:require [babashka.process :refer [check process]]
+            [clojure.string :as str]
+            [clojure.test :refer [is]]
+            [lambdaisland.cucumber.dsl :refer [Before After Given Then]]))
 
 (Before []
-  (-> (process ["mkdir" "-p" "data/01"] {:out :string})) check)
+  (-> (process ["mkdir" "-p" "data/arweave01"] {:out :string})) check)
 
 (After []
   (-> (process ["./spnctl" "stop"] {:out :string})) check)
