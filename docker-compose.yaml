@@ -31,5 +31,5 @@ services:
     environment:
       # TODO move INTAKE_URL into config
       - INTAKE_URL=https://engine.strongpool.net/intake
-      - WSPORAS_PATH=/data/arweave01/strongpool/proofs
+      - PROOF_PATHS=/data/arweave01/strongpool/proofs
       - ENABLE_SIPHON=1
