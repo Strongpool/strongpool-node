@@ -29,7 +29,7 @@ services:
         source: ./data
         target: /data
     environment:
-      # TODO move INTAKE_URL into config
+      # TODO move values into config
       - INTAKE_URL=https://engine.strongpool.net/intake
       - PROOFS_PATHS=/data/arweave01/strongpool/proofs
-      - ENABLE_SIPHON=1
+      - COMPONENTS=siphon
