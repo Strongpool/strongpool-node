@@ -61,7 +61,7 @@ early feedback from those interested in its future development.
    `stongpool-node` directory and edit it to set your mining address.
 4. Start the node by running `./spnctl start`.
 
-## Updating
+## Upgrading
 
 1. Change into the strongpool-node directory: `cd strongpool-node`
 2. Stop the strongpool-node if it's running: `./spnctl stop`
