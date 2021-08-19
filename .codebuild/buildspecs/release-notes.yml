@@ -19,4 +19,4 @@ phases:
 
   build:
     commands:
-      - ./.codebuild/release-notes
+      - ./.codebuild/release-notes-build
