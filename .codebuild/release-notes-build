@@ -2,6 +2,7 @@
 
 set -ex
 
+# TODO remove this comment - testing release build
 # TODO fix lint issue
 source .env
 
