@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -ex
+
+# TODO fix lint issue
+source .env
+
+cd engine && git log --online "$ENGINE_COMMIT".."$NEW_ENGINE_COMMIT"

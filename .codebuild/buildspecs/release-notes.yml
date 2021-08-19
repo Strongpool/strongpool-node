@@ -1,0 +1,22 @@
+---
+
+version: 0.2
+
+env:
+  shell: bash
+  parameter-store:
+    GITHUB_ACCESS_TOKEN: '/strongpool/_/_/build/github-access-token'
+
+phases:
+  pre_build:
+    commands:
+      - dockerd-entrypoint.sh &
+      - until docker info >/dev/null 2>&1; do sleep 1; done
+      - git config --global user.email "builds@strongpool.net"
+      - git config --global user.name "Build Automation"
+      - git clone "https://strongpool-builds:$GITHUB_ACCESS_TOKEN@github.com/Strongpool/arweave.git"
+      - git clone "https://strongpool-builds:$GITHUB_ACCESS_TOKEN@github.com/Strongpool/engine.git"
+
+  build:
+    commands:
+      - ./.codebuild/release-notes
