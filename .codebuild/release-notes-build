@@ -5,4 +5,4 @@ set -ex
 # TODO fix lint issue
 source .env
 
-cd engine && git log --online "$ENGINE_COMMIT".."$NEW_ENGINE_COMMIT"
+cd engine && git log --oneline "$ENGINE_COMMIT".."$NEW_ENGINE_COMMIT"
