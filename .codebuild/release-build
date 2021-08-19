@@ -6,7 +6,7 @@ if git log --pretty=full -1 | grep 'skip ci'; then
   exit 0
 fi
 
-git fetch origin/develop
+git fetch
 git merge --ff-only origin/develop
 ./bin/feature-tests
 git push
