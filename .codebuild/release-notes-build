@@ -2,7 +2,14 @@
 
 set -ex
 
-# TODO remove this comment - testing release build
+# TODO fix lint issue
+source .env
+
+NEW_ARWEAVE_COMMIT="$ARWEAVE_COMMIT"
+NEW_ENGINE_COMMIT="$ENGINE_COMMIT"
+
+git checkout main
+
 # TODO fix lint issue
 source .env
 
