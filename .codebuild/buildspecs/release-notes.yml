@@ -18,3 +18,7 @@ phases:
   build:
     commands:
       - ./.codebuild/release-notes-build
+
+artifacts:
+  files:
+    - release_notes

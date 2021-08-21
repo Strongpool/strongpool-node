@@ -1,0 +1,11 @@
+---
+
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  build:
+    commands:
+      - echo $release_notes
