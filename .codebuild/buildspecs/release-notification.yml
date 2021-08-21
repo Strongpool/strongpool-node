@@ -4,8 +4,10 @@ version: 0.2
 
 env:
   shell: bash
+  parameter-store:
+    RELEASE_NOTIFICATION_WEBHOOK_URL: '/strongpool/_/_/build/release-notification-webhook-url'
 
 phases:
   build:
     commands:
-      - cat release_notes
+      - curl -X POST -F 'release_notes=@release_notes' $RELEASE_NOTIFICATION_WEBHOOK_URL
