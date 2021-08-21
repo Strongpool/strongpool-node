@@ -2,15 +2,24 @@
 
 set -ex
 
-# TODO fix lint issue
-source .env
+source $CODEBUILD_SRC_DIR/.env
 
 NEW_ARWEAVE_COMMIT="$ARWEAVE_COMMIT"
 NEW_ENGINE_COMMIT="$ENGINE_COMMIT"
 
 git checkout main
 
-# TODO fix lint issue
-source .env
+source $CODEBUILD_SRC_DIR/.env
 
-cd engine && git log --oneline "$ENGINE_COMMIT".."$NEW_ENGINE_COMMIT"
+release_notes=$CODEBUILD_SRC_DIR/release-notes
+
+echo "Strongpool Node changes:" > $release_notes
+git log --oneline main..$CODEBUILD_RESOLVED_SOURCE_VERSION >> $release_notes
+
+echo >> $release_notes
+echo "Engine changes:" >> $release_notes
+cd $CODEBUILD_SRC_DIR/engine && git log --oneline $ENGINE_COMMIT..$NEW_ENGINE_COMMIT >> $release_notes
+
+echo >> $release_notes
+echo "Arweave changes:" >> $release_notes
+cd $CODEBUILD_SRC_DIR/arweave && git log --oneline $ARWEAVE_COMMIT..$NEW_ARWEAVE_COMMIT >> $release_notes
