@@ -10,8 +10,6 @@ env:
 phases:
   pre_build:
     commands:
-      - dockerd-entrypoint.sh &
-      - until docker info >/dev/null 2>&1; do sleep 1; done
       - git config --global user.email "builds@strongpool.net"
       - git config --global user.name "Build Automation"
       - git clone "https://strongpool-builds:$GITHUB_ACCESS_TOKEN@github.com/Strongpool/arweave.git"
