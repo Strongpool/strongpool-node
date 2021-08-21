@@ -10,4 +10,4 @@ env:
 phases:
   build:
     commands:
-      - curl -X POST -F 'release_notes=@release_notes' $RELEASE_NOTIFICATION_WEBHOOK_URL
+      - curl -X POST -F 'release_notes=<release_notes' $RELEASE_NOTIFICATION_WEBHOOK_URL
