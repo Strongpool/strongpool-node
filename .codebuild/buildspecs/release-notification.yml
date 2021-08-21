@@ -8,4 +8,4 @@ env:
 phases:
   build:
     commands:
-      - echo $release_notes
+      - cat release_notes
