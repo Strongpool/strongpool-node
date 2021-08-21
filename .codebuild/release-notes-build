@@ -11,6 +11,8 @@ git checkout main
 
 source $CODEBUILD_SRC_DIR/.env
 
+git checkout develop
+
 release_notes=$CODEBUILD_SRC_DIR/release_notes
 
 echo "Strongpool Node changes:" > $release_notes
