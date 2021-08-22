@@ -12,8 +12,6 @@
 (def digest-regex #"(?i)^[a-z0-9-_]{43}$")
 (def ipv4-address-regex #"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$")
 
-;; TODO support multiple mining address and miners
-
 (s/def ::ipv4-address (s/and string? #(re-matches ipv4-address-regex %)))
 (s/def ::miner-address (s/and string? #(re-matches digest-regex %)))
 (s/def ::peers (s/coll-of ::ipv4-address))
@@ -36,9 +34,7 @@
              "188.166.192.169"
              "163.47.11.64"
              "139.59.51.59"
-             "138.197.232.192"}
-    ;; TODO add :miners vector with overrides to support multiple miner services
-    }
+             "138.197.232.192"}}
    :engine
    {:image-repo "ghcr.io/strongpool/engine"}})
 
