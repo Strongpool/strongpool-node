@@ -7,5 +7,6 @@
   {:extra-paths ["dev"]}
   :test
   {:extra-paths ["test"]
-   :extra-deps {lambdaisland/kaocha-cucumber {:mvn/version "0.0-53"}}
+   :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.861"}
+                lambdaisland/kaocha-cucumber {:mvn/version "0.0-53"}}
    :jvm-opts ["-Dhyperfiddle.rcf.generate-tests=true"]}}}

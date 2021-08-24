@@ -1,5 +1,9 @@
 #kaocha/v1
-{:tests [{:id                  :features
+{:tests [{:id                  :unit
+          :source-paths        ["src"]
+          :ns-patterns         [".*"]
+          :test-paths          ["src"]}
+         {:id                  :features
           :type                :kaocha.type/cucumber
           :source-paths        ["src"]
           :test-paths          ["test/features"]

@@ -65,7 +65,7 @@ jobs:
       ##
 
       - name: Run unit tests
-        run: ./bin/rcf-tests
+        run: ./bin/unit-tests
 
       ##
       ## Slack completion notifications

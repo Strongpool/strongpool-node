@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-clojure -M:test -e "(require 'net.strongpool.node.tasks)(clojure.test/run-tests 'net.strongpool.node.tasks)"

@@ -8,7 +8,7 @@ env:
 phases:
   build:
     commands:
-      - ./bin/rcf-tests
+      - ./bin/unit-tests
 
 cache:
   paths:
