@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -ex
-
-git checkout stable
-git merge --ff-only main
-git push
-git checkout main
