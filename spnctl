@@ -71,17 +71,9 @@ if [ "${babashka_version}" != "$(echo -e "${installed_babashka_version}\n${babas
 fi
 
 # TODO check whether huge pages are enabled
-
-if [[ $# = 0 ]]; then
-    $bb --tasks
-    exit
-fi
-
 # TODO copy example config into correct place on first run
 
 PATH="$(pwd)/bin:$PATH"
 export PATH
 
-# TODO print usage on error
-
-"${bb}" run "$@"
+"${bb}" --classpath src:vendor/docopt.clj/src:vendor/expound/src:vendor/spartan.spec/src --main net.strongpool.node "$@"

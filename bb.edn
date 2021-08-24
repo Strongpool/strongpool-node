@@ -1,18 +1,3 @@
-{:paths ["src" "vendor/expound/src" "vendor/spartan.spec/src"]
+{:paths ["src"]
  :tasks
- {:requires ([net.strongpool.node.tasks :as tasks])
-  start
-  {:doc "Start the node"
-   :task (tasks/start)}
-
-  stop
-  {:doc "Stop the node"
-   :task (tasks/stop)}
-
-  logs
-  {:doc "Display logs for the node"
-   :task (tasks/logs)}
-
-  validate-config
-  {:doc "Validate node config"
-   :task (tasks/validate-config)}}}
+ {:requires ([net.strongpool.node.tasks :as tasks])}}
