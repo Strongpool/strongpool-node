@@ -6,7 +6,6 @@ env:
   shell: bash
   parameter-store:
     GITHUB_TOKEN: '/strongpool/_/_/automation/github-access-token'
-  parameter-store:
     RELEASE_NOTIFICATION_WEBHOOK_URL: '/strongpool/_/_/automation/release-notification-webhook-url'
 
 phases:
