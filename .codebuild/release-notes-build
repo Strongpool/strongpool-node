@@ -33,5 +33,7 @@ echo >> $release_notes
 echo "Arweave changes:" >> $release_notes
 cd $CODEBUILD_SRC_DIR/arweave && git log --oneline "$ARWEAVE_COMMIT..$NEW_ARWEAVE_COMMIT" >> $release_notes
 
+# Create release draft
+cd $CODEBUILD_SRC_DIR
 release_tag=$(voom-like-version)
 gh release create $release_tag --draft --target develop --notes-file $release_notes
