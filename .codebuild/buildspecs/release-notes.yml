@@ -5,7 +5,7 @@ version: 0.2
 env:
   shell: bash
   parameter-store:
-    GITHUB_TOKEN: '/strongpool/_/_/build/github-access-token'
+    GITHUB_TOKEN: '/strongpool/_/_/automation/github-access-token'
 
 phases:
   pre_build:

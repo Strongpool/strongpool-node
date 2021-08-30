@@ -5,7 +5,7 @@ version: 0.2
 env:
   shell: bash
   parameter-store:
-    RELEASE_NOTIFICATION_WEBHOOK_URL: '/strongpool/_/_/build/release-notification-webhook-url'
+    RELEASE_NOTIFICATION_WEBHOOK_URL: '/strongpool/_/_/automation/release-notification-webhook-url'
 
 phases:
   build:
