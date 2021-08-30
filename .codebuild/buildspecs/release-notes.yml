@@ -6,6 +6,8 @@ env:
   shell: bash
   parameter-store:
     GITHUB_TOKEN: '/strongpool/_/_/automation/github-access-token'
+  exported-variables:
+    - RELEASE_NOTES_GIST_URL
 
 phases:
   pre_build:
@@ -16,8 +18,10 @@ phases:
   build:
     commands:
       - ./.codebuild/release-notes-build
+      - RELEASE_NOTES_GIST_URL=$(cat release_notes_gist_url)
 
 artifacts:
   files:
     - .codebuild/**/*
     - release_notes
+    - release_notes_gist_url

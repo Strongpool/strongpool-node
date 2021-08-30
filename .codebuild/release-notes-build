@@ -32,3 +32,5 @@ cd $CODEBUILD_SRC_DIR/engine && git log --oneline "$ENGINE_COMMIT..$NEW_ENGINE_C
 echo >> $release_notes
 echo "Arweave changes:" >> $release_notes
 cd $CODEBUILD_SRC_DIR/arweave && git log --oneline "$ARWEAVE_COMMIT..$NEW_ARWEAVE_COMMIT" >> $release_notes
+
+gh gist create -d strongpool-node-release-notes-$(voom-like-version) $release_notes > $CODEBUILD_SRC_DIR/release_notes_gist_url
