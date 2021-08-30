@@ -23,5 +23,3 @@ phases:
 artifacts:
   files:
     - .codebuild/**/*
-    - release_notes
-    - release_notes_gist_url
