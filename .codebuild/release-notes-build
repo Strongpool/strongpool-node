@@ -2,9 +2,6 @@
 
 set -ex
 
-# Create release tag before repo is dirty
-release_tag=$(voom-like-version)
-
 # Copy the latest successfully integrated commit hashes
 source $CODEBUILD_SRC_DIR/.env
 NEW_ARWEAVE_COMMIT=$ARWEAVE_COMMIT
@@ -38,4 +35,4 @@ cd $CODEBUILD_SRC_DIR/arweave && git log --oneline "$ARWEAVE_COMMIT..$NEW_ARWEAV
 
 # Create release draft
 cd $CODEBUILD_SRC_DIR
-gh release -R Strongpool/strongpool-node create $release_tag --draft --target develop --notes-file $release_notes
+gh release -R Strongpool/strongpool-node create $RELEASE_TAG --draft --target develop --notes-file $release_notes

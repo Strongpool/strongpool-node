@@ -10,5 +10,5 @@ env:
 phases:
   build:
     commands:
-      - curl -sL $RELEASE_NOTES_GIST_URL/raw -O release_notes
+      - gh release -R Strongpool/strongpool-node view $RELEASE_TAG -q .body --json body > release_notes
       - curl -X POST -F 'release_notes=<release_notes' $RELEASE_NOTIFICATION_WEBHOOK_URL

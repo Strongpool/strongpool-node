@@ -6,12 +6,15 @@ env:
   shell: bash
   parameter-store:
     GITHUB_TOKEN: '/strongpool/_/_/automation/github-access-token'
+  exported-variables:
+    - RELEASE_TAG
 
 phases:
   pre_build:
     commands:
       - git config --global user.email "$GIT_USER_EMAIL"
       - git config --global user.name "$GIT_USER_NAME"
+      - RELEASE_TAG=$(voom-like-version)
 
   build:
     commands:
