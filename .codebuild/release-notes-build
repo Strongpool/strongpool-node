@@ -2,6 +2,9 @@
 
 set -ex
 
+# Create release tag before repo is dirty
+release_tag=$(voom-like-version)
+
 # Copy the latest successfully integrated commit hashes
 source $CODEBUILD_SRC_DIR/.env
 NEW_ARWEAVE_COMMIT=$ARWEAVE_COMMIT
