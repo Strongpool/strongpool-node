@@ -38,5 +38,4 @@ cd $CODEBUILD_SRC_DIR/arweave && git log --oneline "$ARWEAVE_COMMIT..$NEW_ARWEAV
 
 # Create release draft
 cd $CODEBUILD_SRC_DIR
-release_tag=$(voom-like-version)
-gh release create $release_tag --draft --target develop --notes-file $release_notes
+gh release -R Strongpool/strongpool-node create $release_tag --draft --target develop --notes-file $release_notes
