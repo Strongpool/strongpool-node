@@ -14,3 +14,5 @@ if git commit -m "Update container image tags [skip ci]"; then
   ./bin/feature-tests
   git push
 fi
+
+record-success

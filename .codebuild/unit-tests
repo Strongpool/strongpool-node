@@ -6,3 +6,5 @@ skip-ci && exit 0
 already-succeeded && exit 0
 
 ./bin/unit-tests
+
+record-success
