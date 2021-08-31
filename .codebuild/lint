@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -ex
+
+skip-ci && exit 0
+already-succeeded && exit 0
+
+./bin/lint

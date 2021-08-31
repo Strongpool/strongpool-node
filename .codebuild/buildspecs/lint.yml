@@ -8,4 +8,8 @@ env:
 phases:
   build:
     commands:
-      - ./bin/lint
+      - ./.codebuild/lint
+
+cache:
+  paths:
+    - /root/last-success-version
