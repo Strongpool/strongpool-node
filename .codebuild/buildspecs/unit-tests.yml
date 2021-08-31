@@ -8,8 +8,9 @@ env:
 phases:
   build:
     commands:
-      - ./bin/unit-tests
+      - ./.codebuild/unit-tests
 
 cache:
   paths:
-    - '/root/.m2/**/*'
+    - /root/.m2/**/*
+    - /root/last-success-version
