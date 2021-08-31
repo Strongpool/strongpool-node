@@ -3,13 +3,14 @@
 set -ex
 
 skip-ci && exit 0
+already-succeeded && exit 0
 
 echo "ARWEAVE_COMMIT=$ARWEAVE_COMMIT" > .env
 echo "ARWEAVE_IMAGE_TAG=$ARWEAVE_IMAGE_TAG" >> .env
 echo "ENGINE_COMMIT=$ENGINE_COMMIT" >> .env
 echo "ENGINE_IMAGE_TAG=$ENGINE_IMAGE_TAG" >> .env
 git add .env
-if git commit -m "Update service container image tags"; then
+if git commit -m "Update container image tags [skip ci]"; then
   ./bin/feature-tests
   git push
 fi
