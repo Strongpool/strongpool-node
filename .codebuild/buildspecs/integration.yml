@@ -21,3 +21,7 @@ phases:
   build:
     commands:
       - ./.codebuild/integration-build
+
+cache:
+  paths:
+    - /root/last-success-version
