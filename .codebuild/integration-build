@@ -2,9 +2,7 @@
 
 set -ex
 
-if git log --pretty=full -1 | grep 'skip ci'; then
-  exit 0
-fi
+skip-ci && exit 0
 
 echo "ARWEAVE_COMMIT=$ARWEAVE_COMMIT" > .env
 echo "ARWEAVE_IMAGE_TAG=$ARWEAVE_IMAGE_TAG" >> .env
