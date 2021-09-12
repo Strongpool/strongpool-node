@@ -2,7 +2,6 @@
 
 set -ex
 
-skip-ci && exit 0
 already-succeeded && exit 0
 
 echo "ARWEAVE_COMMIT=$ARWEAVE_COMMIT" > .env
