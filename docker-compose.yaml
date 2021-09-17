@@ -36,4 +36,3 @@ services:
       - MODE=node
       - INTAKE_URL=https://engine.strongpool.net/intake
       - PROOFS_PATHS=/data/arweave01/strongpool/proofs
-      - COMPONENTS=siphon
