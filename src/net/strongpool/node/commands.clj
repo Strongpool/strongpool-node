@@ -25,15 +25,18 @@
 (defn arweave-args-str [config]
   (str/join " " (arweave-args config)))
 
-(defn arweave-env-vars [config]
-  (let [{:keys [arweave debug?]} config
+(defn env-vars [config]
+  (let [{:keys [arweave debug? miner-address]} config
         {:keys [egress-rate-limit]} arweave]
     (cond-> {}
       debug?
       (assoc :DEBUG "1")
 
       egress-rate-limit
-      (assoc :EGRESS_RATE_LIMIT egress-rate-limit))))
+      (assoc :EGRESS_RATE_LIMIT egress-rate-limit)
+
+      miner-address
+      (assoc :MINER_ADDRESSES miner-address))))
 
 ;; TODO unified handling of exceptions thrown by 'check'
 
@@ -50,7 +53,7 @@
                                                          (get-in config [:arweave :image-repo]))
                                  :ENGINE_IMAGE_REPO (or (System/getenv "ENGINE_IMAGE_REPO")
                                                         (get-in config [:engine :image-repo]))}
-                                (arweave-env-vars config))})
+                                (env-vars config))})
           check
           :out
           print)
