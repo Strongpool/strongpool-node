@@ -49,7 +49,7 @@
                                  :ARWEAVE_IMAGE_REPO (or (System/getenv "ARWEAVE_IMAGE_REPO")
                                                          (get-in config [:arweave :image-repo]))
                                  :ENGINE_IMAGE_REPO (or (System/getenv "ENGINE_IMAGE_REPO")
-                                                         (get-in config [:engine :image-repo]))}
+                                                        (get-in config [:engine :image-repo]))}
                                 (arweave-env-vars config))})
           check
           :out
