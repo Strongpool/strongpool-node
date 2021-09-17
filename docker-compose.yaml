@@ -11,6 +11,9 @@ services:
       - type: bind
         source: ./data/arweave01
         target: /data
+      - type: bind
+        source: /dev/hugepages
+        target: /dev/hugepages
     environment:
       - DEBUG
       - EGRESS_RATE_LIMIT
