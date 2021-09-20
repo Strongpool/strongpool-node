@@ -10,6 +10,7 @@ echo "ENGINE_COMMIT=$ENGINE_COMMIT" >> .env
 echo "ENGINE_IMAGE_TAG=$ENGINE_IMAGE_TAG" >> .env
 git add .env
 if git commit -m "Update container image tags [skip ci]"; then
+  mkdir -p /dev/hugepages
   ./bin/feature-tests
   git push
 fi
