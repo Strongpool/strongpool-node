@@ -36,7 +36,7 @@
       (assoc :EGRESS_RATE_LIMIT egress-rate-limit)
 
       miner-address
-      (assoc :MINER_ADDRESSES miner-address))))
+      (assoc :ARWEAVE_MINER_ADDRESSES miner-address))))
 
 ;; TODO unified handling of exceptions thrown by 'check'
 
