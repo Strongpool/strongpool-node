@@ -2,8 +2,6 @@
 
 set -ex
 
-already-succeeded && exit 0
-
 echo "ARWEAVE_COMMIT=$ARWEAVE_COMMIT" > .env
 echo "ARWEAVE_IMAGE_TAG=$ARWEAVE_IMAGE_TAG" >> .env
 echo "ENGINE_COMMIT=$ENGINE_COMMIT" >> .env
