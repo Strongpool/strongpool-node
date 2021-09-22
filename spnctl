@@ -16,7 +16,7 @@ min_docker_compose_version="1.25.0"
 command -v curl > /dev/null || die "Missing required dependency: curl"
 command -v docker > /dev/null || die "Missing required dependency: docker\nPlease follow the install instructions here: https://docs.docker.com/engine/install/"
 
-mkdir -p bin data
+mkdir -p bin data wallets/arweave
 
 # Ensure expected version of docker-compose is available
 

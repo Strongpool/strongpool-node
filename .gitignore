@@ -8,8 +8,9 @@
 /bin/bb
 /bin/docker-compose
 
-# Arweave data
+# Data and wallets
 /data
+/wallets
 
 # Configuration
 /config/strongpool.edn
