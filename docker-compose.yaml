@@ -31,6 +31,9 @@ services:
       - type: bind
         source: ./data
         target: /data
+      - type: bind
+        source: ./wallets
+        target: /wallets
     environment:
       # TODO move values into config
       - EVENT_INTAKE_URL=https://engine.strongpool.net/intake/events
