@@ -11,6 +11,7 @@
 # Data and wallets
 /data
 /wallets
+!/wallets/arweave/.gitkeep
 
 # Configuration
 /config/strongpool.edn
