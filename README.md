@@ -43,7 +43,9 @@ development.
 4. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the
    `stongpool-node` directory: `cp config/strongpool-example.edn config/strongpool.edn`
 5. Edit the config file (`config/strongpool.edn`) and set your miner address
-   (e.g. with nano: `nano config/strongpool.edn`).
+   (e.g. with nano: `nano config/strongpool.edn`). We recommend using
+   [ArConnect](https://arconnect.io/) to create a wallet if you don't already
+   have one.
 6. Copy your mining wallet key into `wallets/arweave` with a file name matching
    your mining address (e.g.
    `wallets/arweave/V6iZkMkNEqfEYYiXdqS0AkvPNbAV8cfj6FOAwPl2vUU.json`). Note:
