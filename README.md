@@ -37,9 +37,9 @@ development.
 ## Getting Started
 
 1. Clone the `main` branch of this repo: `git clone -b main https://github.com/Strongpool/strongpool-node.git`
-2. If you have existing miner data, copy it into `data/` in the
-   `strongpool-node` directory (created by `git clone`).
-3. Change directories into the `strongpool-node` directory: `cd strongpool-node`
+2. Change into the `strongpool-node` directory: `cd strongpool-node`
+3. If you have existing miner data, copy it into `data/` in the
+   `strongpool-node` directory (created by the `git clone` above).
 4. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the
    `stongpool-node` directory: `cp config/strongpool-example.edn config/strongpool.edn`
 5. Edit the config file (`config/strongpool.edn`) and set your miner address
