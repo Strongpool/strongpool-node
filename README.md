@@ -29,7 +29,7 @@ development.
 - A computer or virtual machine with Linux installed. [Ubuntu
   20.04](https://ubuntu.com/download/server) is recommended, but other
   distributions should also work.
-- Free disk space for Arweave data. For mining, you will want at least 4TB free.
+- Free disk space for Arweave data. For mining, you will want at least 6TB free.
 - Docker installed. On Ubuntu 20.04, run `sudo apt install docker.io` to install
   it. For other distributions, follow the official Docker [install
   instructions](https://docs.docker.com/engine/install/).
