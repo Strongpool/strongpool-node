@@ -53,13 +53,21 @@ early feedback from those interested in its future development.
 
 ## Getting Started
 
-1. Clone the `main` branch of this repo: `git clone -b main
-   https://github.com/Strongpool/strongpool-node.git`
+1. Clone the `main` branch of this repo: `git clone -b main https://github.com/Strongpool/strongpool-node.git`
 2. If you have existing miner data, copy it into `data/` in the
-   `strongpool-node` directory.
-3. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the
-   `stongpool-node` directory and edit it to set your mining address.
-4. Start the node by running `./spnctl start`.
+   `strongpool-node` directory (created by `git clone`).
+3. Change directories into the `strongpool-node` directory: `cd strongpool-node`
+4. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the
+   `stongpool-node` directory: `cp config/strongpool-example.edn config/strongpool.edn`
+5. Edit the config file (`config/strongpool.edn`) and set your miner address
+   (e.g. with nano: `nano config/strongpool.edn`).
+6. Copy your mining wallet key into `wallets/arweave` with a file name matching
+   your mining address (e.g.
+   `wallets/arweave/V6iZkMkNEqfEYYiXdqS0AkvPNbAV8cfj6FOAwPl2vUU.json`). Note:
+   the name of the file must exactly match the miner address you set in the
+   config file (with a `.json` extension appended).
+7. Ensure your user has beed added to the Docker group: `usermod -aG docker $USER`
+8. Start the node by running `./spnctl start`.
 
 ## Upgrading
 
