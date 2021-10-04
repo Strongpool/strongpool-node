@@ -39,11 +39,12 @@ development.
 1. Clone the `main` branch of this repo: `git clone -b main https://github.com/Strongpool/strongpool-node.git`
 2. Change into the `strongpool-node` directory: `cd strongpool-node`
 3. If you have existing miner data, copy it into `data/` in the
-   `strongpool-node` directory (created by the `git clone` above).
+   `strongpool-node` directory (created by `git clone` above).
 4. Copy `config/strongpool-example.edn` to `config/strongpool.edn` in the
    `stongpool-node` directory: `cp config/strongpool-example.edn config/strongpool.edn`
 5. Edit the config file (`config/strongpool.edn`) and set your miner address
-   (e.g. with nano: `nano config/strongpool.edn`). We recommend using
+   (e.g. with nano: `nano config/strongpool.edn`). We recommend using the
+   [Arweave Faucet](https://faucet.arweave.net/) or
    [ArConnect](https://arconnect.io/) to create a wallet if you don't already
    have one.
 6. Copy your mining wallet key into `wallets/arweave` with a file name matching
