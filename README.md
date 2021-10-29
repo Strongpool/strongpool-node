@@ -52,7 +52,7 @@ development.
    `wallets/arweave/V6iZkMkNEqfEYYiXdqS0AkvPNbAV8cfj6FOAwPl2vUU.json`). Note:
    the name of the file must exactly match the miner address you set in the
    config file (with a `.json` extension appended).
-7. Ensure your user has beed added to the Docker group: `usermod -aG docker $USER`
+7. Ensure your user has beed added to the Docker group: `sudo usermod -aG docker $USER`
 8. Start the node by running `./spnctl start`.
 
 ## Upgrading
