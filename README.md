@@ -29,7 +29,12 @@ development.
 - A computer or virtual machine with Linux installed. [Ubuntu
   20.04](https://ubuntu.com/download/server) is recommended, but other
   distributions should also work.
-- Free disk space for Arweave data. For mining, you will want at least 6TB free.
+- 16GB RAM
+- Free disk space for Arweave data. For mining, at least a 6TB NVMe drive is
+  recommended. Smaller or slower drives will work, but your hash rate will be
+  reduced as a result. Note: If you have already been mining with the official
+  miner, you don't need to delete that data, the Strongpool node can use it.
+- Reasonably stable public IP with port 1984 forwarded to your miner.
 - Docker installed. On Ubuntu 20.04, run `sudo apt install docker.io` to install
   it. For other distributions, follow the official Docker [install
   instructions](https://docs.docker.com/engine/install/).
