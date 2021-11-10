@@ -70,18 +70,20 @@
   ;; TODO stream output
   (when-let [config (config/validated-load)]
     (-> (process ["docker-compose" "exec" "-d" "arweave01" "/arweave/bin/stop"]
-                 {:out :string
-                  :env {:PATH (System/getenv "PATH")
-                        :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
-                                           (get-in config [:arweave :image]))}})
+                 (merge {:out :string
+                         :env {:PATH (System/getenv "PATH")
+                               :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
+                                                  (get-in config [:arweave :image]))}}
+                        (env-vars config)))
         check
         :out
         print)
     (-> (process ["docker-compose" "stop" "engine"]
                  {:out :string
-                  :env {:PATH (System/getenv "PATH")
-                        :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
-                                           (get-in config [:arweave :image]))}})
+                  :env (merge {:PATH (System/getenv "PATH")
+                               :ARWEAVE_IMAGE (or (System/getenv "ARWEAVE_IMAGE")
+                                                  (get-in config [:arweave :image]))}
+                              (env-vars config))})
         check
         :out
         print)
