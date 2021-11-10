@@ -27,7 +27,7 @@
 
 (defn env-vars [config]
   (let [{:keys [arweave debug? miner-address]} config
-        {:keys [egress-rate-limit]} arweave]
+        {:keys [egress-rate-limit port] :or {port 1984}} arweave]
     (cond-> {}
       debug?
       (assoc :DEBUG "1")
@@ -36,7 +36,10 @@
       (assoc :EGRESS_RATE_LIMIT egress-rate-limit)
 
       miner-address
-      (assoc :ARWEAVE_MINER_ADDRESSES miner-address))))
+      (assoc :ARWEAVE_MINER_ADDRESSES miner-address)
+
+      port
+      (assoc :ARWEAVE0_PORT port))))
 
 ;; TODO unified handling of exceptions thrown by 'check'
 
