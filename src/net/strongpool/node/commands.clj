@@ -92,7 +92,9 @@
 
 ;; TODO why does this end up clearing the screen part way through
 (defn logs []
-  (let [p (process ["docker-compose" "logs"])]
+  (let [config (config/validated-load)
+        p (process ["docker-compose" "logs"]
+                   {:env (env-vars config)})]
     (with-open [rdr (io/reader (:out p))]
       (binding [*in* rdr]
         (loop []
