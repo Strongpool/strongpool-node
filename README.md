@@ -35,7 +35,7 @@ development.
   reduced as a result. Note: If you have already been mining with the official
   miner, you don't need to delete that data, the Strongpool node can use it.
 - Reasonably stable public IP with port 1984 forwarded to your miner.
-- git installed. Run `sudo apt install git` to install it.
+- git installed. On Ubuntu 20.04, run `sudo apt install git` to install it.
 - Docker installed. On Ubuntu 20.04, run `sudo apt install docker.io` to install
   it. For other distributions, follow the official Docker [install
   instructions](https://docs.docker.com/engine/install/).
