@@ -17,7 +17,8 @@
 
 (Then "the '(.*)' service should be running" [state service]
   (check (:spnctl-process state))
-  (let [service-line (-> (process ["docker-compose" "ps" "--" service]  {:out :string})
+  (let [service-line (-> (process ["docker-compose" "ps" "--" service]  {:out :string
+                                                                         :env {:ARWEAVE0_PORT 1984}})
                          check
                          :out
                          str/split-lines
