@@ -94,7 +94,8 @@
 (defn logs []
   (let [config (config/validated-load)
         p (process ["docker-compose" "logs"]
-                   {:env (env-vars config)})]
+                   {:env (merge {:PATH (System/getenv "PATH")}
+                                (env-vars config))})]
     (with-open [rdr (io/reader (:out p))]
       (binding [*in* rdr]
         (loop []
