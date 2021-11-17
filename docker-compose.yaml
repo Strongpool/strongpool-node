@@ -40,5 +40,5 @@ services:
       - EVENT_INTAKE_URL=https://engine.strongpool.net/intake/events
       - MODE=node
       - INTAKE_URL=https://engine.strongpool.net/intake
-      - ARWEAVE_PROOFS_PATHS=/data/arweave01/strongpool/proofs
+      - ARWEAVE_DATA_PATHS=/data/arweave01
       - ARWEAVE_MINER_ADDRESSES
