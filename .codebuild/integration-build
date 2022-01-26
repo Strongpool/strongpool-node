@@ -14,7 +14,7 @@ if git commit -m "Update container image tags [skip ci]"; then
 fi
 
 if [ -n "${DOCS_BUCKET}" ]; then
-  asciidoc -O out docs/usage.adoc
+  asciidoctor -O out docs/usage.adoc
   aws s3 sync --delete out "s3://${DOCS_BUCKET}/strongpool-node/${BRANCH}/docs/"
 fi
 
