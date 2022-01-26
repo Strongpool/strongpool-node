@@ -1,0 +1,11 @@
+:source-highlighter: highlight.js
+:highlightjs-languages: gherkin
+
+= Strongpool Node Usage
+
+== Starting a Node
+
+[source,gherkin]
+----
+include::./starting_a_node.feature[]
+----
