@@ -1,5 +1,6 @@
 :source-highlighter: highlight.js
 :highlightjs-languages: gherkin
+:sourcedir: test/features
 
 = Strongpool Node Usage
 
@@ -7,5 +8,5 @@
 
 [source,gherkin]
 ----
-include::./starting_a_node.feature[]
+include::{sourcedir}/starting_a_node.feature[]
 ----
