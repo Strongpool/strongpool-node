@@ -1,6 +1,7 @@
-# Clojure
+# Dev
 /.clj-kondo/.cache
 /.cpcache
+/.lsp
 /.nrepl-port
 /target
 
